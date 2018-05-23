@@ -141,6 +141,11 @@ for num in range(0,12):
     dataframe.to_csv('/Users/martin_yan/Desktop/data.csv', index=False, encoding="utf_8_sig", columns=columns, mode='a',
                      header=sec)
     wei = weight.iloc[num]['减重值']
+    weipercent = weight.iloc[num]['减重百分比']
+    age = weight.iloc[num]['年龄']
+    gender = weight.iloc[num]['性别']
+    bmi = weight.iloc[num]['BMI']
+
     dataframe2 = pd.DataFrame({'用户编号': [data.iloc[1][0]], '姓名': [data.iloc[1]['姓名']], '记录天数': [len(time)],
                                 '水果摄入量平均分': [sum_fruit / len(time)],
                                 '蔬菜摄入量平均分': [sum_veg / len(time)],
@@ -157,7 +162,8 @@ for num in range(0,12):
                                 '总热量摄入量平均分': [sum_totalheat / len(time)],
                                 '三大营养素组成平均分': [sum_nutrients / len(time)],
                                 '饮酒（酒精量，全天标准）平均分': [sum_alcohol / len(time)],
-                                '饮水量平均分': [sum_water / len(time)],'减重值':[wei]
+                                '饮水量平均分': [sum_water / len(time)],'减重值':[wei],
+                               '减重百分比':[weipercent],'年龄':[age],'性别':[gender],'BMI':[bmi]
                                })
 
     columns2 = ['用户编号', '姓名', '记录天数', '水果摄入量平均分', '蔬菜摄入量平均分', '全谷类摄入量平均分',
@@ -165,7 +171,7 @@ for num in range(0,12):
                 '总蛋白摄入量平均分',  '鱼虾贝壳类及植物蛋白类摄入量平均分',
                  '不饱和与饱和脂肪酸摄入比平均分','固态脂肪摄入量平均分', '钠盐摄入量平均分',
                 '添加糖摄入量平均分', '总热量摄入量平均分', '三大营养素组成平均分',
-                '饮酒（酒精量，全天标准）平均分', '饮水量平均分','减重值']
+                '饮酒（酒精量，全天标准）平均分', '饮水量平均分','减重值','减重百分比','年龄','性别','BMI']
 
     dataframe2.to_csv('/Users/martin_yan/Desktop/mean_data.csv', index=False, encoding="utf_8_sig", columns=columns2,
                       mode='a', header=sec)
