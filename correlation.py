@@ -10,7 +10,9 @@ plt.rcParams['axes.unicode_minus']=False
 data = pd.read_csv('/Users/martin_yan/Desktop/mean_data.csv')
 data.drop(['用户编号', '记录天数'], inplace=True, axis=1)
 #一元线性回归求相关性
+
 numeric_features = data.select_dtypes(include=[np.number])
+# 默认为pearson相关系数,另外选择method=spearman表示spearman相关系数等级皮尔逊相关系数，而method=kendall表示另外一种秩相关系数
 corr = numeric_features.corr()
 print (corr['减重值'].sort_values(ascending=False), '\n')
 print (corr['减重百分比'].sort_values(ascending=False), '\n')
