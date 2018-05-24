@@ -108,6 +108,7 @@ for num in range(0,12):
 
 
     totalscore=[]
+    score=0
     time=data['记录日期'].unique()
     sum_fruit = 0
     sum_f_fruit = 0
@@ -147,6 +148,8 @@ for num in range(0,12):
         name.append(data.iloc[1]['姓名'])
         totalscore.append(fruit[i]+veg[i]+wholegrain[i]+refinegrain[i]+diefiber[i]+milk[i]+totalprotein[i]+fishshrimp[i]+fattyacids[i]
                       +solidfat[i]+salt[i]+sugar[i]+totalheat[i]+nutrients[i]+alcohol[i]+water[i])
+
+        score=score+totalscore[i]
         sum_fruit = sum_fruit + fruit[i]
         sum_f_fruit = sum_f_fruit + f_fruit[i]
 
@@ -252,14 +255,14 @@ for num in range(0,12):
                                '三大营养素实际摄入平均量': [sum_f_nutrients / len(time)], '三大营养素组成平均分': [sum_nutrients / len(time)],
                                '饮酒实际摄入平均量': [sum_f_alcohol / len(time)], '饮酒（酒精量，全天标准）平均分': [sum_alcohol / len(time)],
                                '饮水平均量': [sum_f_water / len(time)], '饮水量平均分': [sum_water / len(time)], '减重值': [wei],
-                               '减重百分比': [weipercent], '年龄': [age], '性别': [gender], 'BMI': [bmi]})
+                               '减重百分比': [weipercent], '年龄': [age], '性别': [gender], 'BMI': [bmi],'平均得分':[score/len(time)]})
 
     columns2 = ['用户编号', '姓名', '记录天数', '水果实际摄入平均量', '水果摄入量平均分', '蔬菜实际摄入平均量', '蔬菜摄入量平均分', '全谷类实际摄入平均量', '全谷类摄入量平均分',
                 '精制谷物摄入平均量', '精制谷物摄入量平均分', '膳食纤维实际摄入平均量', '膳食纤维摄入量平均分', '乳类实际摄入平均量', '乳类摄入量平均分', '总蛋白实际摄入平均量',
                 '总蛋白摄入量平均分', '鱼虾贝壳类及植物蛋白类实际摄入平均量', '鱼虾贝壳类及植物蛋白类摄入量平均分',
                 '不饱和与饱和脂肪酸实际摄入平均量', '不饱和与饱和脂肪酸摄入比平均分', '固态脂肪实际摄入平均量', '固态脂肪摄入量平均分', '钠盐实际摄入平均量', '钠盐摄入量平均分',
                 '添加糖实际摄入平均量', '添加糖摄入量平均分', '总热量实际摄入平均量', '总热量摄入量平均分', '三大营养素实际摄入平均量', '三大营养素组成平均分', '饮酒实际摄入平均量',
-                '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分', '减重值', '减重百分比', '年龄', '性别', 'BMI']
+                '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分', '减重值', '减重百分比', '年龄', '性别', 'BMI','平均得分']
 
     dataframe2.to_csv('/Users/martin_yan/Desktop/mean_data.csv', index=False, encoding="utf_8_sig", columns=columns2,
                       mode='a', header=sec)
