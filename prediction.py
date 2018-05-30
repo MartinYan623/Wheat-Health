@@ -1,7 +1,4 @@
 import pandas as pd
-import sklearn.cross_validation as cv
-
-import pandas as pd
 import numpy as np
 from sklearn import linear_model
 from sklearn.metrics import mean_squared_error
