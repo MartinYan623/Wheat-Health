@@ -1,6 +1,6 @@
 import pandas as pd
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/new_babymother_data.csv')
 info=pd.read_csv('data/用户信息表2.csv')
 data = pd.merge(data, info, on='姓名')
 print(len(data['姓名'].unique()))
@@ -136,7 +136,7 @@ for i in range(len(data)):
                     '添加糖实际摄入平均量', '添加糖摄入量平均分', '总热量实际摄入平均量', '总热量摄入量平均分', '三大营养素实际摄入平均量', '三大营养素组成平均分', '饮酒实际摄入平均量',
                     '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','减重值','BMI']
 
-        dataframe2.to_csv('/Users/martin_yan/Desktop/mean_babymother_data.csv', index=False, encoding="utf_8_sig",
+        dataframe2.to_csv('/Users/martin_yan/Desktop/new_mean_babymother_data.csv', index=False, encoding="utf_8_sig",
                           columns=columns2,mode='a',header=sec)
 
         sum_fruit = 0

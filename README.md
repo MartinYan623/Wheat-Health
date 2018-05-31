@@ -56,6 +56,11 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> correlation2.py : 读取mean_babymother_data, 做减重值、BMI对分数的相关性分析。
 
 
+-----> test.py : 增加user的初始体重和减重百分比列。
+
+将用户根据BMI分为AB组(大于24或小于等于24),计算每个用户每天和初始体重的差值。
+
+
 LOG:
 
 5.22 读取一个用户的数据，对数据扩展变形处理，输出为data_num.csv。
@@ -89,3 +94,9 @@ LOG:
 5.30 对宝妈营用户数据进行清洗，生成mother_data及mean_babymother_data。
 
 对清洗后的数据做相关性分析。
+
+5.31 增加原始体重和减重百分比列。
+
+Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况。
+
+更改数据为新的标准评分标准，找各指标与减重值、减重百分比的相关性。
