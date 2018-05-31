@@ -53,7 +53,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 和用户信息表2做关于姓名的连接，合并表。生成文件mean_babymother_data。
 
-------> 读取mean_babymother_data,做减重值、BMI对分数的相关性分析。
+-----> correlation2.py : 读取mean_babymother_data, 做减重值、BMI对分数的相关性分析。
 
 
 LOG:
