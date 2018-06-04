@@ -43,7 +43,15 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> prediction.py : 预测用户的平均得分，减重值等数据。利用线性回归函数做预测。
 
-使用RMSE值评估模型误差。
+使用RMSE值评估模型误差。PCA降低数据维度。核心代码如下：
+
+#pca = PCA(n_components='mle')
+
+#pca.fit(pre_data)
+
+#X_pca=pca.fit_transform(pre_data)
+
+#print(pca.explained_variance_ratio_)
 
 -----> babymother.py : 将读取的宝妈营数据文件csv中rf列的16项子属性展开，并计算出每人每日的总得分。
 
@@ -105,10 +113,12 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 
 更改数据为新的标准评分标准，找各指标与减重值、减重百分比的相关性。
 
-5.32 用BMI分组，计算每个用户每日与上一日的体重差值，并用Tableau绘制图。
+6.1 用BMI分组，计算每个用户每日与上一日的体重差值，并用Tableau绘制图。
 
 增加用户筛选条件，筛选出用户记录7天及以上的有效记录数据。
 
 用分数分组，计算每个用户每日与初始体重差值以及与上一日体重差值。
 
 以BMI和减重绝对值分为四组，看数据的分布情况。
+
+6.2 PCA降低数据维度，和原始维度准确性比较下降。

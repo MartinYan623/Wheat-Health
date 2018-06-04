@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 encoding='UTF-8'
-
+"""
 data=pd.read_csv('data/用户初始体重表.csv')
 meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data.csv',usecols=['BMI','姓名','用户编号','平均得分'])
 
@@ -10,7 +10,7 @@ data=data[data['日期']> '2018/5/21 0:00']
 #打印满足条件的用户初始体重表里的人数
 print(len(data['uid'].unique()))
 
-"""
+
 #去掉除每个人第一个记录日期外的重复行
 people=data.drop_duplicates('uid','first',inplace=True)
 #删除不需要的列
@@ -27,7 +27,7 @@ for i in range(len(data)):
     change.append(reduce/original)
 data['减重百分比']=change
 data.to_csv('/Users/martin_yan/Desktop/new_babymother_completedata.csv', index=False, encoding="utf_8_sig")
-"""
+
 
 data=data.drop_duplicates(['uid','日期'])
 data.drop(['uid'], inplace=True, axis=1)
@@ -84,11 +84,10 @@ print(dataframe)
 print(count1)
 print(count2)
 dataframe.to_csv('/Users/martin_yan/Desktop/11111111.csv', index=False, encoding="utf_8_sig", columns=columns)
-
-
 """
-data=pd.read_csv('/Users/martin_yan/Desktop/test.csv')
-data=data[data['减重值']<1.01]
+
+
+data=pd.read_csv('/Users/martin_yan/Desktop/addBMI.csv')
+data=data[(data['减重值']>1) & (data['BMI'] > 22)]
 print(data)
 print(data.describe())
-"""
