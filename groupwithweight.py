@@ -1,22 +1,22 @@
 import pandas as pd
 import numpy as np
 encoding='UTF-8'
-"""
-data=pd.read_csv('data/用户初始体重表.csv')
-meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data.csv',usecols=['BMI','姓名','用户编号','平均得分'])
+
+data=pd.read_csv('data/用户信息表3.csv',usecols=['姓名','体重'])
+meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.4.csv')
 
 #删除早于2018／5／22的体重数据
-data=data[data['日期']> '2018/5/21 0:00']
+#data=data[data['日期']> '2018/5/21 0:00']
 #打印满足条件的用户初始体重表里的人数
-print(len(data['uid'].unique()))
+#print(len(data['uid'].unique()))
 
 
 #去掉除每个人第一个记录日期外的重复行
-people=data.drop_duplicates('uid','first',inplace=True)
+#people=data.drop_duplicates('uid','first',inplace=True)
 #删除不需要的列
-data.drop(['日期','uid'], inplace=True, axis=1)
+#data.drop(['日期','uid'], inplace=True, axis=1)
 #对数据重新index编号
-data=data.reset_index(drop=True)
+#data=data.reset_index(drop=True)
 #以姓名来左连接两个表
 data = pd.merge(meandata, data, how='left', on='姓名')
 change=[]
@@ -25,10 +25,13 @@ for i in range(len(data)):
     original=data.iloc[i]['体重']
     reduce=data.iloc[i]['减重值']
     change.append(reduce/original)
+#修改列名(任意个数)
+data.rename(columns={'体重':'初始体重值'}, inplace = True)
 data['减重百分比']=change
-data.to_csv('/Users/martin_yan/Desktop/new_babymother_completedata.csv', index=False, encoding="utf_8_sig")
+print(data)
+data.to_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv', index=False, encoding="utf_8_sig")
 
-
+"""
 data=data.drop_duplicates(['uid','日期'])
 data.drop(['uid'], inplace=True, axis=1)
 data = pd.merge(meandata, data, how='left', on='姓名')
@@ -84,10 +87,11 @@ print(dataframe)
 print(count1)
 print(count2)
 dataframe.to_csv('/Users/martin_yan/Desktop/11111111.csv', index=False, encoding="utf_8_sig", columns=columns)
-"""
+
 
 
 data=pd.read_csv('/Users/martin_yan/Desktop/addBMI.csv')
 data=data[(data['减重值']>1) & (data['BMI'] > 22)]
 print(data)
 print(data.describe())
+"""

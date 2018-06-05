@@ -72,6 +72,8 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 用BMI和减重大小分为4组，看数据的分布。
 
+-----> findlatestweight.py : 找到用户目前最新的体重值。并记录下用户的身高数据为计算BMI做准备。
+
 
 LOG:
 
@@ -126,3 +128,7 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 #调用estimator的score缺省函数，对分类器对应于准确率为sklearn.metrics.accuracy_score
 
 对回归器对应于R2得分sklearn.metrics.r2_score
+
+6.5 对一周的数据5.30-6.4做预处理和清洗。
+
+增加年龄新属性到babymother_completedata5.22-6.4.csv。

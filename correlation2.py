@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
-data = pd.read_csv('/Users/martin_yan/Desktop/new_babymother_completedata.csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv')
 #data=data[data['记录天数']>3]
 data.drop(['用户编号', '记录天数'], inplace=True, axis=1)
 print(data)
@@ -72,6 +72,6 @@ ax = fig.gca(projection='3d')
 # 1.画出真实的点
 ax.scatter(xx, yy, zz)
 # 2.画出拟合的平面
-ax.plot_wireframe(xx, yy, regr.predict(X).reshape(1,88))
-ax.plot_surface(xx, yy, regr.predict(X).reshape(1,88), alpha=0.3)
+ax.plot_wireframe(xx, yy, regr.predict(X).reshape(1,81))
+ax.plot_surface(xx, yy, regr.predict(X).reshape(1,81), alpha=0.3)
 plt.show()
