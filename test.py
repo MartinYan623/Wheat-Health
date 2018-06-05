@@ -71,16 +71,4 @@ poly.fit_transform(X)
 """
 
 
-from sklearn.decomposition import PCA
-data = pd.read_csv('/Users/martin_yan/Desktop/new_babymother_completedata.csv')
-matrix=[]
-for i in range(len(data)):
-    row = []
-    for j in range(3,36):
-        row.append(data.iloc[i][j])
-    matrix.append(row)
-print(matrix)
-pca = PCA(n_components=0.98)
-pca.fit(matrix)
-print(pca.n_components)
-print(pca.explained_variance_ratio_)
+

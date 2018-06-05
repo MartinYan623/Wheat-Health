@@ -121,4 +121,8 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 
 以BMI和减重绝对值分为四组，看数据的分布情况。
 
-6.2 PCA降低数据维度，和原始维度准确性比较下降。
+6.4 PCA降低数据维度，和原始维度准确性比较下降。
+
+#调用estimator的score缺省函数，对分类器对应于准确率为sklearn.metrics.accuracy_score
+
+对回归器对应于R2得分sklearn.metrics.r2_score
