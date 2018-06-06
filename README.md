@@ -4,6 +4,26 @@
 
 本代码需要运行在python3.6环境下，运行前需要安装以下常用的python第三方库 pandas,numpy,matplotlib,seaborn和sklearn。
 
+代码结果如下:
+
+Wheat-Health---WheatGreen|---correlation.py
+            |            |---modifycriterion.py
+            |            |---preprocessing.py
+            |            |---seekweight.py
+            |
+            |
+            ---BabyMother|---babymother.py
+            |            |---babymother_mean.py
+            |            |---correlation2.py
+            |            |---findlatestweight.py
+            |            |---groupwithweight.py
+            |            |---numbermeal.py
+            |            |---prediction.py
+            |            |---test.py
+            |
+            |
+            ---data|---all data for this project
+
 
 ----> preprocessing.py : 读取多个csv文件中的数据进行预处理操作，
 
@@ -75,6 +95,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> findlatestweight.py : 找到用户目前最新的体重值。并记录下用户的身高数据为计算BMI做准备。
 
 
+-----> numbermeal.py : 统计出用户到目前为止记录完整三餐情况的天数。并将结果写入到babymother_completedata中。
+
+
 LOG:
 
 5.22 读取一个用户的数据，对数据扩展变形处理，输出为data_num.csv。
@@ -132,3 +155,12 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 6.5 对一周的数据5.30-6.4做预处理和清洗。
 
 增加年龄新属性到babymother_completedata5.22-6.4.csv。
+
+6.6 分析各项和减重绝对值、减重百分比之间的相关性。
+
+增加记录次数，统计出用户完整记录三餐的天数。
+
+统计出用户第一周减重值和第二周减重值及累积减重值。
+
+以BMI和年龄分四组，探究不同组别的平均得分和减重值的情况。
+

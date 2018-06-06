@@ -1,9 +1,11 @@
 import pandas as pd
 import numpy as np
 encoding='UTF-8'
-
+"""
 data=pd.read_csv('data/用户信息表3.csv',usecols=['姓名','体重'])
 meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.4.csv')
+
+
 
 #删除早于2018／5／22的体重数据
 #data=data[data['日期']> '2018/5/21 0:00']
@@ -31,7 +33,7 @@ data['减重百分比']=change
 print(data)
 data.to_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv', index=False, encoding="utf_8_sig")
 
-"""
+
 data=data.drop_duplicates(['uid','日期'])
 data.drop(['uid'], inplace=True, axis=1)
 data = pd.merge(meandata, data, how='left', on='姓名')
@@ -87,11 +89,10 @@ print(dataframe)
 print(count1)
 print(count2)
 dataframe.to_csv('/Users/martin_yan/Desktop/11111111.csv', index=False, encoding="utf_8_sig", columns=columns)
+"""
 
 
-
-data=pd.read_csv('/Users/martin_yan/Desktop/addBMI.csv')
-data=data[(data['减重值']>1) & (data['BMI'] > 22)]
+data=pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv')
+data=data[(data['年龄']>38) & (data['BMI'] < 24.01)]
 print(data)
 print(data.describe())
-"""
