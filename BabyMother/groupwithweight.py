@@ -66,22 +66,22 @@ print(data)
 for i in range(len(data)):
     if data.iloc[i]['BMI']>24:
         if note[i] == False:
-            #weight=data.iloc[i]['体重']
+            weight=data.iloc[i]['体重']
             count1=count1+1
         else:
             username.append(data.iloc[i]['姓名'])
-            reduce.append(data.iloc[i-1]['体重']- data.iloc[i]['体重'])
+            reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
             group.append("A组(BMI>24)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
     else:
         if note[i] == False:
-            #weight = data.iloc[i]['体重']
+            weight = data.iloc[i]['体重']
             count2=count2+1
         else:
             username.append(data.iloc[i]['姓名'])
-            reduce.append(data.iloc[i-1]['体重']- data.iloc[i]['体重'])
+            reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
             group.append("B组(BMI<=24)")
             #score.append(data.iloc[i]['平均得分'])

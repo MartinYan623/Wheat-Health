@@ -1,5 +1,8 @@
 import pandas as pd
 encoding='UTF-8'
+
+#找出用户完整记录的天数
+"""
 data=pd.read_csv('/Users/martin_yan/Desktop/记录餐数.csv',usecols=[0,2,3,4])
 completedata=pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv')
 username=data.duplicated('uid',keep='last')
@@ -23,3 +26,14 @@ columns= ['用户编号', '姓名', '记录天数','完整记录天数','水果�
                     '添加糖实际摄入平均量', '添加糖摄入量平均分', '总热量实际摄入平均量', '总热量摄入量平均分', '三大营养素实际摄入平均量', '三大营养素组成平均分', '饮酒实际摄入平均量',
                     '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','减重值','BMI','初始体重值','减重百分比','年龄']
 data.to_csv('/Users/martin_yan/Desktop/111.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+"""
+data=pd.read_csv('/Users/martin_yan/Desktop/记录餐数.csv',usecols=[0,2,3,4])
+motherdata=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-5.29.csv')
+data = pd.merge(data,motherdata, on=['姓名','记录日期'])
+data=data[data['记录餐数']==2]
+data=data.reset_index(drop=True)
+print(len(data['姓名'].unique()))
+data.drop('uid', inplace=True, axis=1)
+print(data)
+#data.to_csv('/Users/martin_yan/Desktop/111.csv',index=False, encoding="utf_8_sig")

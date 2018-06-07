@@ -7,11 +7,11 @@ from mpl_toolkits.mplot3d import Axes3D
 encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
-data = pd.read_csv('/Users/martin_yan/Desktop/add_completeday.csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/completeday_score.csv')
 #data=data[data['记录天数']>3]
 data.drop(['用户编号'], inplace=True, axis=1)
 print(data)
-
+"""
 #一元线性回归求相关性
 for i in range(len(data)):
     data.loc[i,'水果摄入量平均分']=data.iloc[i]['水果摄入量平均分'] / 130
@@ -30,12 +30,12 @@ for i in range(len(data)):
     data.loc[i, '三大营养素组成平均分'] = data.iloc[i]['三大营养素组成平均分'] / 130
     data.loc[i, '饮酒（酒精量，全天标准）平均分'] = data.iloc[i]['饮酒（酒精量，全天标准）平均分'] / 130
     data.loc[i, '饮水量平均分'] = data.iloc[i]['饮水量平均分'] / 130
-
+"""
 numeric_features = data.select_dtypes(include=[np.number])
 # 默认为pearson相关系数,另外选择method=spearman表示spearman相关系数等级皮尔逊相关系数，而method=kendall表示另外一种秩相关系数
 corr = numeric_features.corr()
 print (corr['减重值'].sort_values(ascending=False), '\n')
-print (corr['减重百分比'].sort_values(ascending=False), '\n')
+#print (corr['减重百分比'].sort_values(ascending=False), '\n')
 #print (corr['蔬菜摄入量平均分'].sort_values(ascending=False), '\n')
 #print (corr['膳食纤维摄入量平均分'].sort_values(ascending=False), '\n')
 #print (corr['平均得分'].sort_values(ascending=False), '\n')
@@ -70,7 +70,7 @@ X, Z = np.column_stack((xx,yy)), zz
 regr = linear_model.LinearRegression()
 # 拟合
 regr.fit(X, Z)
-# 不难得到平面的系数、截距
+# 得到平面的系数、截距
 a, b = regr.coef_, regr.intercept_
 print('coefficients(b1,b2...):',a)
 print('intercept(b0):',b)
