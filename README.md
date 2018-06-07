@@ -20,7 +20,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---numbermeal.py
             |            |---prediction.py
             |            |---test.py
-            |
+            |            |---cleanupscore.py
             |
             ---data|---all data for this project
 
@@ -98,6 +98,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> numbermeal.py : 统计出用户到目前为止记录完整三餐情况的天数。并将结果写入到babymother_completedata中。
 
 
+-----> cleanupscore.py : 将用户每天的饮食得分整合到一个表格里，对没有记录的地方显示NaN。
+
+
 LOG:
 
 5.22 读取一个用户的数据，对数据扩展变形处理，输出为data_num.csv。
@@ -165,3 +168,13 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 以BMI和年龄分四组，探究不同组别的平均得分和减重值的情况。
 
 以BMI分为AB组，探究不同组别的每日累积减重值和减重速率。
+
+6.7 从总分中删掉三大营养素和钠盐两项后，在目前旧标准下和减重值的相关性。
+
+️探究记录每日体重小于10天的人的减重值及减重速率（画图）。
+
+️只取用户记录完整三餐的饮食得分，求饮食平均分，探究和减重的相关性。但是，相关性下降了，原因完整天数少时间和减重阶段数据不匹配。
+
+得出用户前两周的饮食得分表及平均得分值。
+
+整理近期数据，归档。
