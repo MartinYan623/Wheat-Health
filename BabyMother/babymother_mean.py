@@ -1,7 +1,7 @@
 import pandas as pd
 encoding='UTF-8'
 data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
-info=pd.read_csv('../data/用户信息表2.csv')
+info=pd.read_csv('../data/宝妈用户减重表5.22-5.29.csv')
 data = pd.merge(data, info, on='姓名')
 print(len(data['姓名'].unique()))
 

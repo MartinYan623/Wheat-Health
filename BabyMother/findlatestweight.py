@@ -1,7 +1,7 @@
 import pandas as pd
 encoding='UTF-8'
 data=pd.read_csv('../data/height.csv',usecols=[0,1,4,5])
-data2=pd.read_csv('../data/用户初始体重表.csv')
+data2=pd.read_csv('../data/宝妈用户初始体重表.csv')
 data=data.append(data2)
 data=data[data['日期']> '2018/5/21 0:00']
 data = data.drop_duplicates(['uid','日期'],keep='last')

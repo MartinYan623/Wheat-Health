@@ -13,7 +13,7 @@ print(nextday)
 """
 
 data=pd.read_csv('/Users/martin_yan/Desktop/new_babymother_data5.22-6.4.csv',usecols=['用户编号','姓名','记录日期','总得分'])
-#info=pd.read_csv('../data/用户信息表3.csv',usecols=['姓名'])
+#info=pd.read_csv('../data/宝妈用户减重表5.22-6.4.csv',usecols=['姓名'])
 info=pd.read_csv('/Users/martin_yan/Desktop/new_mean_babymother_data5.22-6.4.csv',usecols=['姓名','平均得分'])
 data = pd.merge(data, info, on='姓名')
 print(len(data['姓名'].unique()))

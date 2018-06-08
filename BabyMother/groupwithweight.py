@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 encoding='UTF-8'
 
-data=pd.read_csv('/Users/martin_yan/Desktop/用户每日体重变化5.22-6.4.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/宝妈用户每日体重变化5.22-6.4.csv')
 meandata=pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv',usecols=['用户编号','姓名','BMI','完整记录天数'])
 data.drop('uid', inplace=True, axis=1)
 data = pd.merge(meandata, data, how='left', on='姓名')
@@ -54,6 +54,7 @@ reduce=[]
 time=[]
 username=[]
 data=data[data['完整记录天数']<10]
+#这里指体重实际记录天数
 #data=data[data['实际记录天数']<10]
 data=data.reset_index(drop=True)
 print(len(data['用户编号'].unique()))

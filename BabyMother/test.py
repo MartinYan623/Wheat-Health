@@ -4,7 +4,7 @@ encoding='UTF-8'
 
 
 """
-data=pd.read_csv('data/用户初始体重表.csv')
+data=pd.read_csv('data/宝妈用户初始体重表.csv')
 find=pd.read_csv('/Users/martin_yan/Desktop/heightandweight.csv')
 #删除早于2018／5／22的体重数据
 data=data[data['日期']> '2018/5/21 0:00']
@@ -80,4 +80,66 @@ find.rename(columns={'uid':'用户编号'}, inplace = True)
 data=pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv')
 data = pd.merge(data, find, on='用户编号')
 data.to_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.41.csv',index=False, encoding="utf_8_sig")
+
+#将以前的用户初始体重表中提取出每个用户5.22以后第一天的体重值，重复输入取最后一次记录为准
+data=pd.read_csv('../data/宝妈用户初始体重表.csv')
+data = data.drop_duplicates(['uid','日期'],keep='last')
+data=data[data['日期']> '2018/5/21 0:00']
+data=data.reset_index(drop=True)
+date=data.duplicated(['uid'],keep='first')
+print(data)
+uid=[]
+name=[]
+weight=[]
+time=[]
+for i in range(len(data)):
+    if date[i] == False:
+        uid.append(data.iloc[i]['uid'])
+        name.append(data.iloc[i]['姓名'])
+        weight.append(data.iloc[i]['体重'])
+        time.append(data.iloc[i]['日期'])
+dataframe=pd.DataFrame({'用户编号':uid,'姓名':name,'初始体重值':weight,'日期':time})
+columns = ['用户编号', '姓名', '初始体重值','日期']
+#dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户初始体重表.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+#将目前宝妈营用户初始体重全部输出
+data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.4.csv')
+data = data.drop_duplicates(['uid','日期'],keep='first')
+data=data.reset_index(drop=True)
+date=data.duplicated(['uid'],keep='first')
+uid=[]
+name=[]
+weight=[]
+time=[]
+for i in range(len(data)):
+    if date[i] == False:
+        uid.append(data.iloc[i]['uid'])
+        name.append(data.iloc[i]['姓名'])
+        weight.append(data.iloc[i]['体重'])
+        time.append(data.iloc[i]['日期'])
+dataframe=pd.DataFrame({'用户编号':uid,'姓名':name,'初始体重值':weight,'日期':time})
+columns = ['用户编号', '姓名', '初始体重值','日期']
+
+data2=pd.read_csv('/Users/martin_yan/Desktop/宝妈用户初始体重表.csv')
+data=dataframe.append(data2)
+print(data)
+data=data.drop_duplicates(['用户编号'],keep='first')
+data=data.sort_values('用户编号')
+data=data.reset_index(drop=True)
+print(data)
+data.to_csv('/Users/martin_yan/Desktop/用户初始体重表222.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+
+data=pd.read_csv('../data/heightandweight.csv',usecols=['用户编号','身高'])
+data2=pd.read_csv('../data/宝妈用户初始体重表.csv')
+data = pd.merge(data2, data, how='left', on='用户编号')
+bmi=[]
+for i in range(len(data)):
+    height = data.iloc[i]['身高']
+    weight = data.iloc[i]['初始体重值']
+    bmi.append(weight / pow(height / 100, 2))
+data['BMI']=bmi
+print(data)
+columns = ['用户编号', '姓名', '初始体重值','日期','身高','BMI']
+data.to_csv('/Users/martin_yan/Desktop/宝妈用户初始信息表.csv',index=False, encoding="utf_8_sig",columns=columns)
 """

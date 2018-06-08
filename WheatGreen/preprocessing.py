@@ -1,6 +1,6 @@
 import pandas as pd
 encoding='UTF-8'
-weight=pd.read_csv('data/用户信息表.csv',usecols=[0,3,4,5,6,7])
+weight=pd.read_csv('data/麦青用户基础信息表.csv',usecols=[0,3,4,5,6,7])
 for num in range(0,12):
     data = pd.read_csv('data/%d.csv' % num)
     data.drop(['营id','PB','对比值','推荐满分区间'], inplace=True, axis=1)
