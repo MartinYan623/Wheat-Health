@@ -21,6 +21,8 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---prediction.py
             |            |---test.py
             |            |---cleanupscore.py
+            |            |---cleandata.py
+            |
             |
             ---data|---all data for this project
 
@@ -99,6 +101,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 
 -----> cleanupscore.py : 将用户每天的饮食得分整合到一个表格里，对没有记录的地方显示NaN。
+
+
+-----> cleandata.py : 数据预处理离散化。
 
 
 LOG:
@@ -183,4 +188,8 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 
 体重记录或饮食完整性记录小于10天的人（画图）。
 
+6.11 将用户年龄做离散化分成三类(20-30/30-40/40-50)。
 
+将new评分标准的数据在计算平均分时，除以目前开营的天数而不是用户的记录天数。
+
+用这种方法计算出新的平均得分，和减重值的相关性上升。原：0.350867 新：0.36859。
