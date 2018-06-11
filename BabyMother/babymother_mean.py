@@ -1,9 +1,15 @@
 import pandas as pd
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/2.csv')
-info=pd.read_csv('../data/宝妈用户减重表5.22-6.4.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.29-6.4.csv')
+info=pd.read_csv('../data/宝妈用户减重表5.29-6.4.csv',usecols=[1,2])
+original=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
+birthday=pd.read_csv('../data/宝妈营用户生日.csv',usecols=['uid','年龄'])
+birthday.rename(columns={'uid':'用户编号'}, inplace = True)
 data = pd.merge(data, info, on='姓名')
+data = pd.merge(data, original, on='姓名')
+data = pd.merge(data, birthday, on='用户编号')
 print(len(data['姓名'].unique()))
+print(data)
 
 username=data.duplicated('用户编号',keep='last')
 sum_fruit = 0
@@ -97,6 +103,8 @@ for i in range(len(data)):
 
     if username[i]==False:
         num=num+1
+        #除以实际记录天数
+        """
         dataframe2 = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
                                    '蔬菜实际摄入平均量': [sum_f_veg / count], '蔬菜摄入量平均分': [sum_veg / count],
@@ -124,8 +132,40 @@ for i in range(len(data)):
                                    '饮酒实际摄入平均量': [sum_f_alcohol / count],
                                    '饮酒（酒精量，全天标准）平均分': [sum_alcohol / count],
                                    '饮水平均量': [sum_f_water / count], '饮水量平均分': [sum_water / count],
-                                   '平均得分': [score / 14],'减重值':[data.iloc[i][37]],'BMI':[data.iloc[i][38]]})
-
+                                   '平均得分': [score / count],'减重值':[data.iloc[i][37]],'初始体重值':[data.iloc[i][38]],
+                                   '减重百分比':[data.iloc[i][37]/data.iloc[i][38]],'BMI':[data.iloc[i][39]],'年龄':[data.iloc[i][40]]})
+        """
+        #除以入营以来的天数
+        dataframe2 = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
+                                   '水果实际摄入平均量': [sum_f_fruit / 7], '水果摄入量平均分': [sum_fruit / 7],
+                                   '蔬菜实际摄入平均量': [sum_f_veg / 7], '蔬菜摄入量平均分': [sum_veg / 7],
+                                   '全谷类实际摄入平均量': [sum_f_wholegrain / 7],
+                                   '全谷类摄入量平均分': [sum_wholegrain / 7],
+                                   '精制谷物摄入平均量': [sum_f_refinegrain / 7],
+                                   '精制谷物摄入量平均分': [sum_refinegrain / 7],
+                                   '膳食纤维实际摄入平均量': [sum_f_diefiber / 7],
+                                   '膳食纤维摄入量平均分': [sum_diefiber / 7],
+                                   '乳类实际摄入平均量': [sum_f_milk / count], '乳类摄入量平均分': [sum_milk / 7],
+                                   '总蛋白实际摄入平均量': [sum_f_totalprotein / 7],
+                                   '总蛋白摄入量平均分': [sum_totalprotein / 7],
+                                   '鱼虾贝壳类及植物蛋白类实际摄入平均量': [sum_f_fishshrimp / 7],
+                                   '鱼虾贝壳类及植物蛋白类摄入量平均分': [sum_fishshrimp / 7],
+                                   '不饱和与饱和脂肪酸实际摄入平均量': [sum_f_fattyacids / 7],
+                                   '不饱和与饱和脂肪酸摄入比平均分': [sum_fattyacids / 7],
+                                   '固态脂肪实际摄入平均量': [sum_f_solidfat / 7],
+                                   '固态脂肪摄入量平均分': [sum_solidfat / 7],
+                                   '钠盐实际摄入平均量': [sum_f_salt / 7], '钠盐摄入量平均分': [sum_salt / 7],
+                                   '添加糖实际摄入平均量': [sum_f_sugar / 7], '添加糖摄入量平均分': [sum_sugar / 7],
+                                   '总热量实际摄入平均量': [sum_f_totalheat / 7],
+                                   '总热量摄入量平均分': [sum_totalheat / 7],
+                                   '三大营养素实际摄入平均量': [sum_f_nutrients / 7],
+                                   '三大营养素组成平均分': [sum_nutrients / 7],
+                                   '饮酒实际摄入平均量': [sum_f_alcohol / 7],
+                                   '饮酒（酒精量，全天标准）平均分': [sum_alcohol / 7],
+                                   '饮水平均量': [sum_f_water / 7], '饮水量平均分': [sum_water / 7],
+                                   '平均得分': [score / 7], '减重值': [data.iloc[i][37]], '初始体重值': [data.iloc[i][38]],
+                                   '减重百分比': [data.iloc[i][37] / data.iloc[i][38]], 'BMI': [data.iloc[i][39]],
+                                   '年龄': [data.iloc[i][40]]})
         sec=True
         if num>1:
             sec=False
@@ -134,7 +174,7 @@ for i in range(len(data)):
                     '总蛋白摄入量平均分', '鱼虾贝壳类及植物蛋白类实际摄入平均量', '鱼虾贝壳类及植物蛋白类摄入量平均分',
                     '不饱和与饱和脂肪酸实际摄入平均量', '不饱和与饱和脂肪酸摄入比平均分', '固态脂肪实际摄入平均量', '固态脂肪摄入量平均分', '钠盐实际摄入平均量', '钠盐摄入量平均分',
                     '添加糖实际摄入平均量', '添加糖摄入量平均分', '总热量实际摄入平均量', '总热量摄入量平均分', '三大营养素实际摄入平均量', '三大营养素组成平均分', '饮酒实际摄入平均量',
-                    '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','减重值','BMI']
+                    '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','减重值','初始体重值','减重百分比','BMI','年龄']
 
         dataframe2.to_csv('/Users/martin_yan/Desktop/3.csv', index=False, encoding="utf_8_sig",
                           columns=columns2,mode='a',header=sec)

@@ -1,8 +1,8 @@
 import pandas as pd
 encoding='UTF-8'
-data=pd.read_csv('../data/new_宝妈营数据5.22-5.29.csv',usecols=[0,2,6,7,8,9,12])
-data2=pd.read_csv('../data/new_宝妈营数据5.30-6.4.csv',usecols=[0,2,6,7,8,9,12])
-data=data.append(data2)
+#data=pd.read_csv('../data/宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,8,9,12])
+data=pd.read_csv('../data/宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,8,9,12])
+#data=data.append(data2)
 data=data[(True-data['rf'].isin(['有氧运动','吸烟']))]
 print('宝妈营总人数：'+str(len(data['uid'].unique())))
 data = data.drop_duplicates(['uid','记录日期', 'rf'])
@@ -147,6 +147,7 @@ columns = ['用户编号', '姓名', '记录日期', '水果摄入实际量', '�
                '鱼虾贝壳类及植物蛋白类摄入量得分'
         , '不饱和与饱和脂肪酸实际摄入量', '不饱和与饱和脂肪酸摄入比得分', '固态脂肪摄入实际量', '固态脂肪摄入量得分', '钠盐摄入实际量', '钠盐摄入量得分', '添加糖摄入实际量', '添加糖摄入量得分',
                '总热量摄入实际量', '总热量摄入量得分', '三大营养素摄入实际量', '三大营养素组成得分', '饮酒摄入实际量', '饮酒（酒精量，全天标准）得分', '饮水量', '饮水量得分','总得分']
-dataframe.to_csv('/Users/martin_yan/Desktop/1.csv', index=False, encoding="utf_8_sig", columns=columns)
+dataframe.to_csv('/Users/martin_yan/Desktop/babymother_data5.29-6.4.csv', index=False, encoding="utf_8_sig", columns=columns)
+
 
 
