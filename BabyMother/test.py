@@ -144,14 +144,6 @@ columns = ['用户编号', '姓名', '初始体重值','日期','身高','BMI']
 data.to_csv('/Users/martin_yan/Desktop/宝妈用户初始信息表.csv',index=False, encoding="utf_8_sig",columns=columns)
 
 
-data=pd.read_csv('../data/宝妈营数据5.22-5.29.csv')
-data2=pd.read_csv('../data/宝妈营数据5.30-6.4.csv')
-data=data[data['记录日期']== '2018/5/29 0:00']
-data=data.append(data2)
-columns = ['uid','营id','真实姓名','手机号','pb','pb得分','rf','rf得分','rf满分参考','摄入值','对比值','满分参考区间','记录日期']
-data.to_csv('/Users/martin_yan/Desktop/1.csv',index=False, encoding="utf_8_sig",columns=columns)
-"""
-
 data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.4.csv')
 data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值'])
 #data3=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-5.28.csv')
@@ -175,3 +167,13 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce})
 columns = ['用户编号','姓名','减重值']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.29-6.4.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+"""
+data=pd.read_csv('../data/new_宝妈营数据5.22-5.29.csv')
+data2=pd.read_csv('../data/new_宝妈营数据5.30-6.4.csv')
+data=data[data['记录日期']=='2018/5/29 0:00']
+data=data.append(data2)
+columns = ['uid','营id','真实姓名','手机号','pb','pb得分','rf','rf得分','rf满分参考','摄入值','对比值','满分参考区间','记录日期']
+data.to_csv('/Users/martin_yan/Desktop/new_宝妈营数据5.29-6.4.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+

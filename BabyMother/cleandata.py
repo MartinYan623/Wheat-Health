@@ -21,4 +21,4 @@ age_map = [
 ]
 data = numerical_to_categorical(data, '年龄', age_map)
 print(data)
-data.to_csv('/Users/martin_yan/Desktop/1.csv', index=False, encoding="utf_8_sig")
+data.to_csv('/Users/martin_yan/Desktop/new_宝妈营数据5.22-5.28.csv', index=False, encoding="utf_8_sig")

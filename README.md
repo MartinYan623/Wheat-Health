@@ -22,6 +22,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---test.py
             |            |---cleanupscore.py
             |            |---cleandata.py
+            |            |---hei.py
             |
             |
             ---data|---all data for this project
@@ -104,6 +105,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 
 -----> cleandata.py : 数据预处理离散化。
+
+
+-----> hei.py : hei新的评分标准计算平均得分。
 
 
 LOG:
@@ -197,3 +201,7 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 将前两周时间重新划分为5.22-5.28／5.29-6.4。
 
 计算以入营时间为除数得到的平均分数。
+
+6.12 利用HEI标准重新计算用户的平均饮食得分。HEI标准除去了膳食纤维、总热量、三大营养素和饮水得分。
+
+整理新评分标准下的前两周时间的数据划分新段。
