@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
-data = pd.read_csv('/Users/martin_yan/Desktop/new_mean_babymother_data5.22-6.4.csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.11(21天平均分 体重跨度3周).csv')
 #data=data[data['记录天数']>3]
 data.drop(['用户编号'], inplace=True, axis=1)
 print(data)
@@ -54,7 +54,7 @@ corr = data.corr()
 sns.heatmap(corr)
 #plt.show()
 
-
+"""
 #多元线性回归分析及画图
 list=['蔬菜摄入量平均分','全谷类摄入量平均分','减重值']
 xx=[]
@@ -80,6 +80,7 @@ ax = fig.gca(projection='3d')
 # 1.画出真实的点
 ax.scatter(xx, yy, zz)
 # 2.画出拟合的平面
-ax.plot_wireframe(xx, yy, regr.predict(X).reshape(1,82))
-ax.plot_surface(xx, yy, regr.predict(X).reshape(1,82), alpha=0.3)
+ax.plot_wireframe(xx, yy, regr.predict(X).reshape(1,74))
+ax.plot_surface(xx, yy, regr.predict(X).reshape(1,74), alpha=0.3)
 plt.show()
+"""
