@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-data = pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.11.csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.11(体重跨度3周).csv')
 #target = np.log(data['减重值'])
 #print ("Skew is:", target.skew())
 #plt.hist(target, color='blue')
