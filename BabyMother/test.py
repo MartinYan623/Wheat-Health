@@ -218,7 +218,16 @@ data = pd.merge(data, data2, on='姓名')
 print(data)
 data.to_csv('/Users/martin_yan/Desktop/HEI_mean_babymother_data5.22-6.1111.csv',index=False, encoding="utf_8_sig")
 
-data=pd.read_csv('/Users/martin_yan/Desktop/饮食完整记录且体重记录达到9天以上 5.22-6.4.csv')
+
+data=pd.read_csv('/Users/martin_yan/Desktop/累积.csv')
+data2=pd.read_csv('/Users/martin_yan/Desktop/单周减重值.csv',usecols=[1,3,5,7])
+data = pd.merge(data, data2, on='姓名')
+columns=['用户编号','姓名','第一周减重值','第一周累计减重值','第二周减重值','第二周累计减重值','第三周减重值','第三周累计减重值']
+data.to_csv('/Users/martin_yan/Desktop/1111.csv',index=False, encoding="utf_8_sig",columns=columns)
+print(data)
+"""
+
+data=pd.read_csv('/Users/martin_yan/Desktop/饮食完整记录且体重记录达到9天以上 .csv')
 username=data.duplicated('姓名',keep='last')
 name=[]
 group=[]
@@ -232,11 +241,4 @@ for i in range(len(data)):
         reduce.append(data.iloc[i]['减重值'])
 dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','组别','减肥时间段','减重值']
-dataframe.to_csv('/Users/martin_yan/Desktop/1111.csv',index=False, encoding="utf_8_sig",columns=columns)
-"""
-data=pd.read_csv('/Users/martin_yan/Desktop/累积.csv')
-data2=pd.read_csv('/Users/martin_yan/Desktop/单周减重值.csv',usecols=[1,3,5,7])
-data = pd.merge(data, data2, on='姓名')
-columns=['用户编号','姓名','第一周减重值','第一周累计减重值','第二周减重值','第二周累计减重值','第三周减重值','第三周累计减重值']
-data.to_csv('/Users/martin_yan/Desktop/1111.csv',index=False, encoding="utf_8_sig",columns=columns)
-print(data)
+dataframe.to_excel('/Users/martin_yan/Desktop/饮食完整记录且体重记录达到9天以上  5.22-6.4.xlsx',index=False, encoding="utf_8_sig",columns=columns)

@@ -53,10 +53,10 @@ group=[]
 reduce=[]
 time=[]
 username=[]
-#data=data[data['完整记录天数']>9]
+data=data[data['完整记录天数']>9]
 #这里指体重实际记录天数
-#data=data[data['实际记录天数']>9]
-data=data[(data['实际记录天数']<10) | (data['完整记录天数']<10)]
+data=data[data['实际记录天数']>9]
+#data=data[(data['实际记录天数']<10) | (data['完整记录天数']<10)]
 data=data.reset_index(drop=True)
 print(len(data['用户编号'].unique()))
 
@@ -67,7 +67,7 @@ count1=0
 count2=0
 print(data)
 for i in range(len(data)):
-    if data.iloc[i]['BMI']>24:
+    if data.iloc[i]['BMI']>22:
         if note[i] == False:
             weight=data.iloc[i]['体重']
             count1=count1+1
@@ -75,7 +75,7 @@ for i in range(len(data)):
             username.append(data.iloc[i]['姓名'])
             reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
-            group.append("A组(BMI>24)")
+            group.append("A组(BMI>22)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
     else:
@@ -86,7 +86,7 @@ for i in range(len(data)):
             username.append(data.iloc[i]['姓名'])
             reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
-            group.append("B组(BMI<=24)")
+            group.append("B组(BMI<=22)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
 
@@ -96,7 +96,7 @@ print(dataframe)
 print(count1)
 print(count2)
 dataframe.to_csv('/Users/martin_yan/Desktop/11111111.csv', index=False, encoding="utf_8_sig", columns=columns)
-
+#dataframe.to_excel('/Users/martin_yan/Desktop/11111111.xlsx', index=False, encoding="utf_8_sig", columns=columns)
 
 """
 data=pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv')
