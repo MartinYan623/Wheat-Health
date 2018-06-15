@@ -1,7 +1,7 @@
 import pandas as pd
 encoding='UTF-8'
 data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-6.11.csv')
-info=pd.read_csv('../data/宝妈用户减重表5.22-6.11.csv',usecols=[1,2])
+info=pd.read_csv('../data/宝妈用户减重表5.22-6.11(全部).csv',usecols=[1,2])
 original=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
 birthday=pd.read_csv('../data/宝妈营用户生日.csv',usecols=['uid','年龄'])
 birthday.rename(columns={'uid':'用户编号'}, inplace = True)
@@ -104,7 +104,6 @@ for i in range(len(data)):
     if username[i]==False:
         num=num+1
         #除以实际记录天数
-
         dataframe = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
                                    '蔬菜实际摄入平均量': [sum_f_veg / count], '蔬菜摄入量平均分': [sum_veg / count],

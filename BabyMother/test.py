@@ -227,7 +227,7 @@ data.to_csv('/Users/martin_yan/Desktop/1111.csv',index=False, encoding="utf_8_si
 print(data)
 """
 
-data=pd.read_csv('/Users/martin_yan/Desktop/饮食完整记录且体重记录达到9天以上 .csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/11111111.csv')
 username=data.duplicated('姓名',keep='last')
 name=[]
 group=[]
@@ -241,4 +241,4 @@ for i in range(len(data)):
         reduce.append(data.iloc[i]['减重值'])
 dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','组别','减肥时间段','减重值']
-dataframe.to_excel('/Users/martin_yan/Desktop/饮食完整记录且体重记录达到9天以上  5.22-6.4.xlsx',index=False, encoding="utf_8_sig",columns=columns)
+dataframe.to_csv('/Users/martin_yan/Desktop/2.csv',index=False, encoding="utf_8_sig",columns=columns)

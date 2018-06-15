@@ -23,6 +23,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---cleanupscore.py
             |            |---cleandata.py
             |            |---hei.py
+            |            |---groupwothage.py
             |
             |
             ---data|---all data for this project
@@ -87,7 +88,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> correlation2.py : 读取mean_babymother_data, 做减重值、BMI对分数的相关性分析。
 
 
------> groupwithweight.py : 增加user的初始体重和减重百分比列。
+-----> groupwithbmi.py : 增加user的初始体重和减重百分比列。
 
 将用户根据BMI分为AB组(大于24或小于等于24),计算每个用户每天和初始体重的差值、每天与上一日差值。
 
@@ -107,6 +108,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> hei.py : hei新的评分标准计算平均得分。
 
+-----> groupwothage.py : 以年龄分组，得到用户的每日累积减重值。
 
 LOG:
 
@@ -225,3 +227,5 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 统计前三周中每周用户的累计减重和单周减重情况。
 
 6.15 整理以BMI大于22分组，饮食完整记录和体重完整记录天数最为筛选条件，5.22-6.4/5.22-6.11前两周和前三周数据。
+
+对年龄按照36岁分组，根据分组后得到的累积减重值做t检验，求p值。样本的大小需要一致？
