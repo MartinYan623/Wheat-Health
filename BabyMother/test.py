@@ -233,12 +233,14 @@ name=[]
 group=[]
 date=[]
 reduce=[]
+age=[]
 for i in range(len(data)):
     if username[i]==False:
         name.append(data.iloc[i]['姓名'])
+        age.append(data.iloc[i]['年龄'])
         group.append(data.iloc[i]['组别'])
         date.append(data.iloc[i]['减肥时间段'])
         reduce.append(data.iloc[i]['减重值'])
-dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
-columns=['姓名','组别','减肥时间段','减重值']
+dataframe=pd.DataFrame({'姓名':name,'年龄':age,'组别':group,'减肥时间段':date,'减重值':reduce})
+columns=['姓名','年龄','组别','减肥时间段','减重值']
 dataframe.to_csv('/Users/martin_yan/Desktop/2.csv',index=False, encoding="utf_8_sig",columns=columns)
