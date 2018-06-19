@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
-data = pd.read_csv('/Users/martin_yan/Desktop/111.csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/HEI_new_mean_babymother_data5.22-6.11.csv')
 #data=data[data['记录天数']>3]
 data.drop(['用户编号'], inplace=True, axis=1)
 print(data)
@@ -35,7 +35,7 @@ numeric_features = data.select_dtypes(include=[np.number])
 # 默认为pearson相关系数,另外选择method=spearman表示spearman相关系数等级皮尔逊相关系数，而method=kendall表示另外一种秩相关系数
 corr = numeric_features.corr()
 print (corr['减重值'].sort_values(ascending=False), '\n')
-#print (corr['减重百分比'].sort_values(ascending=False), '\n')
+print (corr['减重百分比'].sort_values(ascending=False), '\n')
 #print (corr['蔬菜摄入量平均分'].sort_values(ascending=False), '\n')
 #print (corr['膳食纤维摄入量平均分'].sort_values(ascending=False), '\n')
 #print (corr['平均得分'].sort_values(ascending=False), '\n')

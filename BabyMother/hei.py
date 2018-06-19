@@ -1,6 +1,6 @@
 import pandas as pd
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-6.11.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/new_babymother_data5.22-6.11.csv')
 #HEI删除了四项指标
 data.drop(['膳食纤维摄入实际量','膳食纤维摄入量得分','总热量摄入实际量','总热量摄入量得分','三大营养素摄入实际量',
            '三大营养素组成得分','饮水量','饮水量得分'], inplace=True, axis=1)
@@ -87,7 +87,7 @@ for i in range(len(data)):
     if username[i]==False:
         num=num+1
         #除以实际记录天数
-        """
+
         dataframe2 = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
                                    '蔬菜实际摄入平均量': [sum_f_veg / count], '蔬菜摄入量平均分': [sum_veg / count],
@@ -134,6 +134,7 @@ for i in range(len(data)):
                                    '平均得分': [score / 21], '减重值': [data.iloc[i][29]], '初始体重值': [data.iloc[i][30]],
                                    '减重百分比': [data.iloc[i][29] / data.iloc[i][30]], 'BMI': [data.iloc[i][31]],
                                    '年龄': [data.iloc[i][32]]})
+        """
 
         sec=True
         if num>1:
