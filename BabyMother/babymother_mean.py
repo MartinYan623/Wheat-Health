@@ -103,6 +103,7 @@ for i in range(len(data)):
 
     if username[i]==False:
         num=num+1
+
         #除以实际记录天数
         dataframe = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
@@ -165,7 +166,7 @@ for i in range(len(data)):
                                    '平均得分': [score / 21], '减重值': [data.iloc[i][37]], '初始体重值': [data.iloc[i][38]],
                                    '减重百分比': [data.iloc[i][37] / data.iloc[i][38]], 'BMI': [data.iloc[i][39]],
                                    '年龄': [data.iloc[i][40]]})
-         """
+        """
         sec=True
         if num>1:
             sec=False

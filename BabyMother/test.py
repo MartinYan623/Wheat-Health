@@ -225,7 +225,7 @@ data = pd.merge(data, data2, on='姓名')
 columns=['用户编号','姓名','第一周减重值','第一周累计减重值','第二周减重值','第二周累计减重值','第三周减重值','第三周累计减重值']
 data.to_csv('/Users/martin_yan/Desktop/1111.csv',index=False, encoding="utf_8_sig",columns=columns)
 print(data)
-"""
+
 
 data=pd.read_csv('/Users/martin_yan/Desktop/11111111.csv')
 username=data.duplicated('姓名',keep='last')
@@ -244,3 +244,4 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'姓名':name,'年龄':age,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','年龄','组别','减肥时间段','减重值']
 dataframe.to_csv('/Users/martin_yan/Desktop/2.csv',index=False, encoding="utf_8_sig",columns=columns)
+"""

@@ -10,10 +10,10 @@ for i in range (len(data)):
     x=[]
     x.append(data.iloc[i]['平均得分'])
     x.append(data.iloc[i]['减重值'])
-    #x.append(data.iloc[i]['总热量实际摄入平均量'])
-    x.append(data.iloc[i]['初始体重值'])
-    x.append(data.iloc[i]['BMI'])
-    x.append(data.iloc[i]['年龄'])
+    x.append(data.iloc[i]['总热量实际摄入平均量'])
+    #x.append(data.iloc[i]['初始体重值'])
+    #x.append(data.iloc[i]['BMI'])
+    #x.append(data.iloc[i]['年龄'])
     X.append(x)
 
 #公式为：(X-mean)/std  计算时对每个属性/每列分别进行

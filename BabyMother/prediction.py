@@ -26,7 +26,7 @@ predictors=['精制谷物摄入量平均分','平均得分','蔬菜摄入量平�
 #根据行号去删除某些行
 #train.drop([2,12] ,axis=0, inplace=True)
 target=train['减重值']
-x_train, x_test, y_train, y_test = train_test_split(train[predictors], target, test_size=.2)
+x_train, x_test, y_train, y_test = train_test_split(train[predictors], target, test_size=.05)
 lr=linear_model.LinearRegression()
 model = lr.fit(x_train, y_train)
 predictions=model.predict(x_test)
