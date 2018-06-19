@@ -14,16 +14,18 @@ Wheat-Health---WheatGreen|---correlation.py
             |
             ---BabyMother|---babymother.py
             |            |---babymother_mean.py
-            |            |---correlation2.py
+            |            |---correlation.py
             |            |---findlatestweight.py
-            |            |---groupwithweight.py
+            |            |---groupwithbmi.py
             |            |---numbermeal.py
             |            |---prediction.py
             |            |---test.py
             |            |---cleanupscore.py
             |            |---cleandata.py
             |            |---hei.py
-            |            |---groupwothage.py
+            |            |---groupwithage.py
+            |            |---pca.py
+            |            |---clustering.py
             |
             |
             ---data|---all data for this project
@@ -67,15 +69,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> prediction.py : 预测用户的平均得分，减重值等数据。利用线性回归函数做预测。
 
-使用RMSE值评估模型误差。PCA降低数据维度。核心代码如下：
-
-#pca = PCA(n_components='mle')
-
-#pca.fit(pre_data)
-
-#X_pca=pca.fit_transform(pre_data)
-
-#print(pca.explained_variance_ratio_)
+使用RMSE值评估模型误差。
 
 -----> babymother.py : 将读取的宝妈营数据文件csv中rf列的16项子属性展开，并计算出每人每日的总得分。
 
@@ -85,8 +79,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 和用户信息表2做关于姓名的连接，合并表。生成文件mean_babymother_data。
 
------> correlation2.py : 读取mean_babymother_data, 做减重值、BMI对分数的相关性分析。
-
+-----> correlation.py : 读取mean_babymother_data, 做减重值、BMI对分数的相关性分析。
 
 -----> groupwithbmi.py : 增加user的初始体重和减重百分比列。
 
@@ -109,6 +102,19 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> hei.py : hei新的评分标准计算平均得分。
 
 -----> groupwothage.py : 以年龄分组，得到用户的每日累积减重值。
+
+-----> pca.py : PCA降低数据维度。核心代码如下：
+
+#pca = PCA(n_components='mle')
+
+#pca.fit(pre_data)
+
+#X_pca=pca.fit_transform(pre_data)
+
+#print(pca.explained_variance_ratio_)
+
+-----> clustering.py : 使用k-means对用户根据得分，减重值，初始体重值，BMI及年龄等属性进行聚类。
+
 
 LOG:
 
@@ -231,3 +237,7 @@ Tableau可视化数据分析AB组用户不同时间段的减重绝对值情况�
 对年龄按照36岁分组，根据分组后得到的累积减重值做t检验，求p值。样本的大小需要一致？
 
 把年龄按照5岁一组，分成5组。（25-29／30-34／35-39／40-44／45-49）
+
+6.19 对用户数据使用k-means方法进行聚类操作。根据使用的属性指标的不同会有不同的聚类结果。
+
+整理宝妈营数据分析的工作流程。
