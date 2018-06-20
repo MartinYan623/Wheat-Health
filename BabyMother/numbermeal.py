@@ -33,14 +33,3 @@ columns= ['用户编号', '姓名', '年龄','BMI','记录天数','完整记录�
                     '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','初始体重值','减重值','减重百分比','助理名称']
 data.to_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.1811.csv',index=False, encoding="utf_8_sig",columns=columns)
 
-"""
-data=pd.read_csv('/Users/martin_yan/Desktop/记录餐数.csv',usecols=[0,2,3,4])
-motherdata=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-5.29.csv')
-data = pd.merge(data,motherdata, on=['姓名','记录日期'])
-data=data[data['记录餐数']==2]
-data=data.reset_index(drop=True)
-print(len(data['姓名'].unique()))
-data.drop('uid', inplace=True, axis=1)
-print(data)
-#data.to_csv('/Users/martin_yan/Desktop/宝妈用户初始信息表.csv',index=False, encoding="utf_8_sig")
-"""

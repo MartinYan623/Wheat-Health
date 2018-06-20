@@ -204,24 +204,6 @@ data.to_csv('/Users/martin_yan/Desktop/1111.csv',index=False, encoding="utf_8_si
 print(data)
 
 
-data=pd.read_csv('/Users/martin_yan/Desktop/11111111.csv')
-username=data.duplicated('姓名',keep='last')
-name=[]
-group=[]
-date=[]
-reduce=[]
-age=[]
-for i in range(len(data)):
-    if username[i]==False:
-        name.append(data.iloc[i]['姓名'])
-        age.append(data.iloc[i]['年龄'])
-        group.append(data.iloc[i]['组别'])
-        date.append(data.iloc[i]['减肥时间段'])
-        reduce.append(data.iloc[i]['减重值'])
-dataframe=pd.DataFrame({'姓名':name,'年龄':age,'组别':group,'减肥时间段':date,'减重值':reduce})
-columns=['姓名','年龄','组别','减肥时间段','减重值']
-dataframe.to_csv('/Users/martin_yan/Desktop/2.csv',index=False, encoding="utf_8_sig",columns=columns)
-
 
 #体重减重值是从入营第一周到目前周
 data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.18.csv')
@@ -249,3 +231,19 @@ dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce,'最�
 columns = ['用户编号','姓名','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.18.csv',index=False, encoding="utf_8_sig",columns=columns)
 """
+
+data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
+username=data.duplicated('姓名',keep='last')
+name=[]
+group=[]
+date=[]
+reduce=[]
+for i in range(len(data)):
+    if username[i]==False:
+        name.append(data.iloc[i]['姓名'])
+        group.append(data.iloc[i]['组别'])
+        date.append(data.iloc[i]['减肥时间段'])
+        reduce.append(data.iloc[i]['减重值'])
+dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
+columns=['姓名','组别','减肥时间段','减重值']
+dataframe.to_excel('/Users/martin_yan/Desktop/2.xlsx',index=False, encoding="utf_8_sig",columns=columns)

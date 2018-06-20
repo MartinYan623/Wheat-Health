@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 encoding='UTF-8'
 
-"""
+
 data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.18.csv')
 meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18.csv',usecols=['用户编号','姓名','BMI','完整记录天数'])
 data = data.drop_duplicates(['uid','日期'])
@@ -10,7 +10,7 @@ data=data.reset_index(drop=True)
 data.drop('uid', inplace=True, axis=1)
 data = pd.merge(meandata, data, how='left', on='姓名')
 
-
+"""
 #删除早于2018／5／22的体重数据
 #data=data[data['日期']> '2018/5/21 0:00']
 #打印满足条件的用户初始体重表里的人数
@@ -35,7 +35,7 @@ data.rename(columns={'体重':'初始体重值'}, inplace = True)
 data['减重百分比']=change
 print(data)
 data.to_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv', index=False, encoding="utf_8_sig")
-
+"""
 
 
 #data=data.drop_duplicates(['uid','日期'])
@@ -57,10 +57,10 @@ group=[]
 reduce=[]
 time=[]
 username=[]
-#data=data[data['完整记录天数']>14]
+#data=data[data['完整记录天数']>19]
 #这里指体重实际记录天数
-data=data[data['实际记录天数']>19]
-#data=data[(data['实际记录天数']<10) | (data['完整记录天数']<10)]
+data=data[data['实际记录天数']<20]
+#data=data[(data['实际记录天数']<20) | (data['完整记录天数']<20)]
 data=data.reset_index(drop=True)
 print(len(data['用户编号'].unique()))
 
@@ -71,26 +71,26 @@ count1=0
 count2=0
 print(data)
 for i in range(len(data)):
-    if data.iloc[i]['BMI']>24:
+    if data.iloc[i]['BMI']>22:
         if note[i] == False:
-            #weight=data.iloc[i]['体重']
+            weight=data.iloc[i]['体重']
             count1=count1+1
         else:
             username.append(data.iloc[i]['姓名'])
-            reduce.append(data.iloc[i-1]['体重']- data.iloc[i]['体重'])
+            reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
-            group.append("A组(BMI>24)")
+            group.append("A组(BMI>22)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
     else:
         if note[i] == False:
-            #weight = data.iloc[i]['体重']
+            weight = data.iloc[i]['体重']
             count2=count2+1
         else:
             username.append(data.iloc[i]['姓名'])
-            reduce.append(data.iloc[i-1]['体重']- data.iloc[i]['体重'])
+            reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
-            group.append("B组(BMI<=24)")
+            group.append("B组(BMI<=22)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
 
@@ -106,4 +106,4 @@ dataframe.to_csv('/Users/martin_yan/Desktop/11.csv', index=False, encoding="utf_
 data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18(体重跨度4周).csv',usecols=['姓名','平均得分','BMI','减重值','记录天数','完整记录天数'])
 data=data[(data['平均得分']>84) & (data['减重值']<3.2)& (data['BMI']>22)& (data['完整记录天数']>22)]
 print(data)
-
+"""

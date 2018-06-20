@@ -1,9 +1,9 @@
 import pandas as pd
 encoding='UTF-8'
-data=pd.read_csv('../data/宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,8,9,12])
-data2=pd.read_csv('../data/宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,8,9,12])
-data3=pd.read_csv('../data/宝妈营数据6.5-6.11.csv',usecols=[0,2,6,7,8,9,12])
-data4=pd.read_csv('../data/宝妈营数据6.12-6.18.csv',usecols=[0,2,6,7,8,9,12])
+data=pd.read_csv('../data/new_宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,8,9,12])
+data2=pd.read_csv('../data/new_宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,8,9,12])
+data3=pd.read_csv('../data/new_宝妈营数据6.5-6.11.csv',usecols=[0,2,6,7,8,9,12])
+data4=pd.read_csv('../data/new_宝妈营数据6.12-6.18.csv',usecols=[0,2,6,7,8,9,12])
 data=data.append(data2)
 data=data.append(data3)
 data=data.append(data4)
