@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn import linear_model
 from sklearn.decomposition import PCA
 
-train=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.11.csv')
+train=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18.csv')
 #选取部分属性作为预测标准
 predictors=['精制谷物摄入量平均分','平均得分','蔬菜摄入量平均分','固态脂肪摄入量平均分','膳食纤维摄入量平均分','初始体重值','BMI','全谷类实际摄入平均量',
 '完整记录天数','不饱和与饱和脂肪酸实际摄入平均量','水果实际摄入平均量','水果摄入量平均分','全谷类摄入量平均分','记录天数','添加糖摄入量平均分',
@@ -14,7 +14,7 @@ predictors=['精制谷物摄入量平均分','平均得分','蔬菜摄入量平�
 target=train['减重值']
 pre_data=train[predictors]
 #利用pca降低维度
-pca = PCA(n_components=3)
+pca = PCA('mle')
 pca.fit(pre_data)
 X_pca=pca.fit_transform(pre_data)
 print(pca.explained_variance_ratio_)
