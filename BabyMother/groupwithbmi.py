@@ -2,12 +2,15 @@ import pandas as pd
 import numpy as np
 encoding='UTF-8'
 
-data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.11.csv')
-meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.11.csv',usecols=['用户编号','姓名','BMI','完整记录天数'])
+"""
+data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.18.csv')
+meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18.csv',usecols=['用户编号','姓名','BMI','完整记录天数'])
+data = data.drop_duplicates(['uid','日期'])
+data=data.reset_index(drop=True)
 data.drop('uid', inplace=True, axis=1)
 data = pd.merge(meandata, data, how='left', on='姓名')
 
-"""
+
 #删除早于2018／5／22的体重数据
 #data=data[data['日期']> '2018/5/21 0:00']
 #打印满足条件的用户初始体重表里的人数
@@ -32,7 +35,8 @@ data.rename(columns={'体重':'初始体重值'}, inplace = True)
 data['减重百分比']=change
 print(data)
 data.to_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv', index=False, encoding="utf_8_sig")
-"""
+
+
 
 #data=data.drop_duplicates(['uid','日期'])
 #data.drop(['uid'], inplace=True, axis=1)
@@ -55,7 +59,7 @@ time=[]
 username=[]
 #data=data[data['完整记录天数']>14]
 #这里指体重实际记录天数
-#data=data[data['实际记录天数']>14]
+data=data[data['实际记录天数']>19]
 #data=data[(data['实际记录天数']<10) | (data['完整记录天数']<10)]
 data=data.reset_index(drop=True)
 print(len(data['用户编号'].unique()))
@@ -95,12 +99,11 @@ columns = ['姓名','组别','减肥时间段','减重值']
 print(dataframe)
 print(count1)
 print(count2)
-dataframe.to_csv('/Users/martin_yan/Desktop/11111111.csv', index=False, encoding="utf_8_sig", columns=columns)
+dataframe.to_csv('/Users/martin_yan/Desktop/11.csv', index=False, encoding="utf_8_sig", columns=columns)
 #dataframe.to_excel('/Users/martin_yan/Desktop/11111111.xlsx', index=False, encoding="utf_8_sig", columns=columns)
 
 """
-data=pd.read_csv('/Users/martin_yan/Desktop/babymother_completedata5.22-6.4.csv')
-data=data[(data['年龄']>38) & (data['BMI'] < 24.01)]
+data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18(体重跨度4周).csv',usecols=['姓名','平均得分','BMI','减重值','记录天数','完整记录天数'])
+data=data[(data['平均得分']>84) & (data['减重值']<3.2)& (data['BMI']>22)& (data['完整记录天数']>22)]
 print(data)
-print(data.describe())
-"""
+

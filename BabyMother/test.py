@@ -188,29 +188,6 @@ columns = ['用户编号','姓名','减重值']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.11(全部).csv',index=False, encoding="utf_8_sig",columns=columns)
 
 
-#体重减重值是从入营第一周到目前周
-data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.11.csv')
-data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','日期'])
-data=data[data['日期']>'2018/6/4 0:00']
-data2=data2[data2['日期']<'2018/5/29 0:00']
-
-data = pd.merge(data, data2, on='姓名')
-data = data.drop_duplicates(['uid','日期'],keep='last')
-data=data.reset_index(drop=True)
-username=data.duplicated('uid',keep='last')
-print(data)
-id=[]
-name=[]
-reduce=[]
-for i in range(len(data)):
-    if username[i] == False:
-        id.append(data.iloc[i]['uid'])
-        name.append(data.iloc[i]['姓名'])
-        reduce.append(data.iloc[i]['初始体重值']-data.iloc[i]['体重'])
-dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce})
-columns = ['用户编号','姓名','减重值']
-dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.11(全部).csv',index=False, encoding="utf_8_sig",columns=columns)
-
 
 data=pd.read_csv('/Users/martin_yan/Desktop/HEI_mean_babymother_data5.22-6.11（21天平均分）.csv')
 data2=pd.read_csv('../data/宝妈用户减重表5.22-6.11.csv',usecols=['姓名'])
@@ -244,4 +221,31 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'姓名':name,'年龄':age,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','年龄','组别','减肥时间段','减重值']
 dataframe.to_csv('/Users/martin_yan/Desktop/2.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+
+#体重减重值是从入营第一周到目前周
+data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.18.csv')
+data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','日期'])
+data=data[data['日期']>'2018/6/11 0:00']
+data=data[data['日期']<'2018/6/2 0:00']
+data2=data2[data2['日期']<'2018/5/29 0:00']
+
+data = pd.merge(data, data2, on='姓名')
+data = data.drop_duplicates(['uid','日期'],keep='last')
+data=data.reset_index(drop=True)
+username=data.duplicated('uid',keep='last')
+print(data)
+id=[]
+name=[]
+reduce=[]
+time=[]
+for i in range(len(data)):
+    if username[i] == False:
+        id.append(data.iloc[i]['uid'])
+        name.append(data.iloc[i]['姓名'])
+        reduce.append(data.iloc[i]['初始体重值']-data.iloc[i]['体重'])
+        time.append(data.iloc[i]['日期_x'])
+dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce,'最后记录体重日期':time})
+columns = ['用户编号','姓名','减重值','最后记录体重日期']
+dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.18.csv',index=False, encoding="utf_8_sig",columns=columns)
 """

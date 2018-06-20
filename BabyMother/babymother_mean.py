@@ -1,7 +1,7 @@
 import pandas as pd
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-6.11.csv')
-info=pd.read_csv('../data/宝妈用户减重表5.22-6.11(全部).csv',usecols=[1,2])
+data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-6.18.csv')
+info=pd.read_csv('../data/宝妈用户减重表5.22-6.18.csv',usecols=[1,2])
 original=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
 birthday=pd.read_csv('../data/宝妈营用户生日.csv',usecols=['uid','年龄'])
 birthday.rename(columns={'uid':'用户编号'}, inplace = True)
@@ -137,33 +137,33 @@ for i in range(len(data)):
         """
         #除以入营以来的天数
         dataframe = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
-                                   '水果实际摄入平均量': [sum_f_fruit / 21], '水果摄入量平均分': [sum_fruit / 21],
-                                   '蔬菜实际摄入平均量': [sum_f_veg / 21], '蔬菜摄入量平均分': [sum_veg / 7],
-                                   '全谷类实际摄入平均量': [sum_f_wholegrain / 21],
-                                   '全谷类摄入量平均分': [sum_wholegrain / 21],
-                                   '精制谷物摄入平均量': [sum_f_refinegrain / 21],
-                                   '精制谷物摄入量平均分': [sum_refinegrain / 21],
-                                   '膳食纤维实际摄入平均量': [sum_f_diefiber / 21],
-                                   '膳食纤维摄入量平均分': [sum_diefiber / 21],
-                                   '乳类实际摄入平均量': [sum_f_milk / count], '乳类摄入量平均分': [sum_milk / 21],
-                                   '总蛋白实际摄入平均量': [sum_f_totalprotein / 21],
-                                   '总蛋白摄入量平均分': [sum_totalprotein / 21],
-                                   '鱼虾贝壳类及植物蛋白类实际摄入平均量': [sum_f_fishshrimp / 21],
-                                   '鱼虾贝壳类及植物蛋白类摄入量平均分': [sum_fishshrimp / 21],
-                                   '不饱和与饱和脂肪酸实际摄入平均量': [sum_f_fattyacids / 21],
-                                   '不饱和与饱和脂肪酸摄入比平均分': [sum_fattyacids / 21],
-                                   '固态脂肪实际摄入平均量': [sum_f_solidfat / 21],
-                                   '固态脂肪摄入量平均分': [sum_solidfat / 21],
-                                   '钠盐实际摄入平均量': [sum_f_salt / 21], '钠盐摄入量平均分': [sum_salt / 21],
-                                   '添加糖实际摄入平均量': [sum_f_sugar / 21], '添加糖摄入量平均分': [sum_sugar / 21],
-                                   '总热量实际摄入平均量': [sum_f_totalheat / 21],
-                                   '总热量摄入量平均分': [sum_totalheat / 21],
-                                   '三大营养素实际摄入平均量': [sum_f_nutrients / 21],
-                                   '三大营养素组成平均分': [sum_nutrients / 21],
-                                   '饮酒实际摄入平均量': [sum_f_alcohol / 21],
-                                   '饮酒（酒精量，全天标准）平均分': [sum_alcohol / 21],
-                                   '饮水平均量': [sum_f_water / 21], '饮水量平均分': [sum_water / 21],
-                                   '平均得分': [score / 21], '减重值': [data.iloc[i][37]], '初始体重值': [data.iloc[i][38]],
+                                   '水果实际摄入平均量': [sum_f_fruit / 28], '水果摄入量平均分': [sum_fruit / 28],
+                                   '蔬菜实际摄入平均量': [sum_f_veg / 28], '蔬菜摄入量平均分': [sum_veg / 28],
+                                   '全谷类实际摄入平均量': [sum_f_wholegrain / 28],
+                                   '全谷类摄入量平均分': [sum_wholegrain / 28],
+                                   '精制谷物摄入平均量': [sum_f_refinegrain / 28],
+                                   '精制谷物摄入量平均分': [sum_refinegrain / 28],
+                                   '膳食纤维实际摄入平均量': [sum_f_diefiber / 28],
+                                   '膳食纤维摄入量平均分': [sum_diefiber / 28],
+                                   '乳类实际摄入平均量': [sum_f_milk / count], '乳类摄入量平均分': [sum_milk / 28],
+                                   '总蛋白实际摄入平均量': [sum_f_totalprotein / 28],
+                                   '总蛋白摄入量平均分': [sum_totalprotein / 28],
+                                   '鱼虾贝壳类及植物蛋白类实际摄入平均量': [sum_f_fishshrimp / 28],
+                                   '鱼虾贝壳类及植物蛋白类摄入量平均分': [sum_fishshrimp / 28],
+                                   '不饱和与饱和脂肪酸实际摄入平均量': [sum_f_fattyacids / 28],
+                                   '不饱和与饱和脂肪酸摄入比平均分': [sum_fattyacids / 28],
+                                   '固态脂肪实际摄入平均量': [sum_f_solidfat / 28],
+                                   '固态脂肪摄入量平均分': [sum_solidfat / 28],
+                                   '钠盐实际摄入平均量': [sum_f_salt / 28], '钠盐摄入量平均分': [sum_salt / 28],
+                                   '添加糖实际摄入平均量': [sum_f_sugar / 28], '添加糖摄入量平均分': [sum_sugar / 28],
+                                   '总热量实际摄入平均量': [sum_f_totalheat / 28],
+                                   '总热量摄入量平均分': [sum_totalheat / 28],
+                                   '三大营养素实际摄入平均量': [sum_f_nutrients / 28],
+                                   '三大营养素组成平均分': [sum_nutrients / 28],
+                                   '饮酒实际摄入平均量': [sum_f_alcohol / 28],
+                                   '饮酒（酒精量，全天标准）平均分': [sum_alcohol / 28],
+                                   '饮水平均量': [sum_f_water / 28], '饮水量平均分': [sum_water / 28],
+                                   '平均得分': [score / 28], '减重值': [data.iloc[i][37]], '初始体重值': [data.iloc[i][38]],
                                    '减重百分比': [data.iloc[i][37] / data.iloc[i][38]], 'BMI': [data.iloc[i][39]],
                                    '年龄': [data.iloc[i][40]]})
         """
