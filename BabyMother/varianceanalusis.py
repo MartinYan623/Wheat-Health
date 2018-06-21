@@ -8,13 +8,15 @@ import matplotlib.pyplot as plt
 import statsmodels.api
 from scipy.stats import ttest_rel
 encoding='UTF-8'
-"""
-data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.11(体重跨度3周).csv')
+
+data=pd.read_csv('/Users/martin_yan/Desktop/1111.csv')
 #计算方差分析f值 如果要做多因素方差分析在右侧+上其他变量即可
-print(data)
-model = ols('减重值 ~ 蔬菜摄入量平均分',data).fit()
+model = ols('减重值 ~平均得分+总热量实际摄入平均量+ BMI+ 完整记录天数',data).fit()
 anovat = anova_lm(model)
 print(anovat)
+
+
+"""
 #t检验p值
 veg=data[['蔬菜摄入量平均分']]
 print(type(veg))
@@ -22,8 +24,8 @@ reduce=data['减重值'].to_frame(name=None)
 fit = statsmodels.api.OLS(reduce, veg).fit()
 print (fit.params)
 print (fit.summary())
-"""
 
+#t检验
 data=pd.read_csv('/Users/martin_yan/Desktop/aaa.csv')
 model = ols('a ~ b',data).fit()
 anovat = anova_lm(model)
@@ -35,3 +37,4 @@ if p>0.05:
 else:
     print('p值是:' + str(p) + ',有显著差异')
 print('t值是:'+str(t))
+"""

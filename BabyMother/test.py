@@ -230,7 +230,7 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce,'最后记录体重日期':time})
 columns = ['用户编号','姓名','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.18.csv',index=False, encoding="utf_8_sig",columns=columns)
-"""
+
 
 data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
 username=data.duplicated('姓名',keep='last')
@@ -247,3 +247,7 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','组别','减肥时间段','减重值']
 dataframe.to_excel('/Users/martin_yan/Desktop/2.xlsx',index=False, encoding="utf_8_sig",columns=columns)
+"""
+data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
+data = data.drop_duplicates(['uid','记录日期', 'rf'])
+data.to_csv('/Users/martin_yan/Desktop/22.csv',index=False, encoding="utf_8_sig")

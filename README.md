@@ -26,6 +26,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---groupwithage.py
             |            |---pca.py
             |            |---clustering.py
+            |            |---lightfood.py
             |
             |
             ---data|---all data for this project
@@ -115,6 +116,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> clustering.py : 使用k-means对用户根据得分，减重值，初始体重值，BMI及年龄等属性进行聚类。
 
+-----> lightfood.py : 区分开用户轻食日和普通日的热量，探究热量对比值的区间。
 
 LOG:
 
@@ -261,3 +263,9 @@ k-means中的参数解释，参考：https://www.cnblogs.com/wuchuanying/p/62184
 BMI分组，探求减重值和减重速率的变化。各种筛选条件下的各指标和减重值的相关性。
 
 整理数据，求用户HEI标准下的新分数。
+
+6.21 前四周的各指标和减重值的相关性汇总。
+
+探究热量的对比值区间。使用二变量对称型和四变量非对称型两种方法。其中，四变量较费时。
+
+统计汇总四周后用户的平均减重情况，Tableau绘制柱形图。
