@@ -26,7 +26,8 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---groupwithage.py
             |            |---pca.py
             |            |---clustering.py
-            |            |---lightfood.py
+            |            |---lightfoodfor2.py
+            |            |---lightfoodfor4.py
             |
             |
             ---data|---all data for this project
@@ -116,7 +117,10 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> clustering.py : 使用k-means对用户根据得分，减重值，初始体重值，BMI及年龄等属性进行聚类。
 
------> lightfood.py : 区分开用户轻食日和普通日的热量，探究热量对比值的区间。
+-----> lightfoodfor2.py : 区分开用户轻食日和普通日的热量，探究热量对比值的区间。二变量对称型。
+
+-----> lightfoodfor4.py : 四变量非对称型，具有abcd四个参数，分别为轻食日和普通日的区间上下限。
+
 
 LOG:
 
@@ -269,3 +273,7 @@ BMI分组，探求减重值和减重速率的变化。各种筛选条件下的�
 探究热量的对比值区间。使用二变量对称型和四变量非对称型两种方法。其中，四变量较费时。
 
 统计汇总四周后用户的平均减重情况，Tableau绘制柱形图。
+
+6.22 整理四周除以入营天数的平均分的新表，求各属性与减重绝对值的相关性。
+
+将lightfood类拆分成二参数和四参数两个类。分别命名为: lightfoodfor2 和 lightfoodfor4。

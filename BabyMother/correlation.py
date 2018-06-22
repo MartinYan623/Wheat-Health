@@ -31,19 +31,12 @@ for i in range(len(data)):
     data.loc[i, '饮酒（酒精量，全天标准）平均分'] = data.iloc[i]['饮酒（酒精量，全天标准）平均分'] / 130
     data.loc[i, '饮水量平均分'] = data.iloc[i]['饮水量平均分'] / 130
 """
+
 numeric_features = data.select_dtypes(include=[np.number])
 # 默认为pearson相关系数,另外选择method=spearman表示spearman相关系数等级皮尔逊相关系数，而method=kendall表示另外一种秩相关系数
 corr = numeric_features.corr()
 print (corr['减重值'].sort_values(ascending=False), '\n')
 print (corr['减重百分比'].sort_values(ascending=False), '\n')
-#print (corr['蔬菜摄入量平均分'].sort_values(ascending=False), '\n')
-#print (corr['膳食纤维摄入量平均分'].sort_values(ascending=False), '\n')
-#print (corr['平均得分'].sort_values(ascending=False), '\n')
-#print (corr['初始体重值'].sort_values(ascending=False), '\n')
-#print (corr['BMI'].sort_values(ascending=False), '\n')
-#print (corr['固态脂肪摄入量平均分'].sort_values(ascending=False), '\n')
-#print (corr['全谷类实际摄入平均量'].sort_values(ascending=False), '\n')
-#print (corr['不饱和与饱和脂肪酸实际摄入平均量'].sort_values(ascending=False), '\n')
 #设置热图大小
 plt.figure(1,figsize=(12,8))
 #设置热图标题
