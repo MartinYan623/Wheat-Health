@@ -3,17 +3,16 @@ encoding='UTF-8'
 data=pd.read_csv('../data/宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,8,9,12])
 data2=pd.read_csv('../data/宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,8,9,12])
 data3=pd.read_csv('../data/宝妈营数据6.5-6.11.csv',usecols=[0,2,6,7,8,9,12])
-#data4=pd.read_csv('../data/宝妈营数据6.12-6.18.csv',usecols=[0,2,6,7,8,9,12])
+data4=pd.read_csv('../data/宝妈营数据6.12-6.18.csv',usecols=[0,2,6,7,8,9,12])
 data=data.append(data2)
 data=data.append(data3)
-#data=data.append(data4)
+data=data.append(data4)
 #用uid对数据排序，默认升序
 #data=data.sort_values(['uid','记录日期'])
 data=data[(True-data['rf'].isin(['有氧运动','吸烟']))]
 print('宝妈营总人数：'+str(len(data['uid'].unique())))
 data = data.drop_duplicates(['uid','记录日期', 'rf'])
 data=data.reset_index(drop=True)
-username=data.duplicated('uid',keep='last')
 date=data.duplicated(['uid','记录日期'],keep='last')
 print(data)
 userid = []
