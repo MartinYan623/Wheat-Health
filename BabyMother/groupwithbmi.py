@@ -102,8 +102,7 @@ print(count2)
 dataframe.to_csv('/Users/martin_yan/Desktop/11.csv', index=False, encoding="utf_8_sig", columns=columns)
 #dataframe.to_excel('/Users/martin_yan/Desktop/11111111.xlsx', index=False, encoding="utf_8_sig", columns=columns)
 
-"""
+
 data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18(体重跨度4周).csv',usecols=['姓名','平均得分','BMI','减重值','记录天数','完整记录天数'])
 data=data[(data['平均得分']>84) & (data['减重值']<3.2)& (data['BMI']>22)& (data['完整记录天数']>22)]
 print(data)
-"""
