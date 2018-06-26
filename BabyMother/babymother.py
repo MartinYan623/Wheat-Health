@@ -8,15 +8,16 @@ data=data.append(data2)
 data=data.append(data3)
 data=data.append(data4)
 #用uid对数据排序，默认升序
-#data=data.sort_values(['uid','记录日期'])
 data=data[(True-data['rf'].isin(['有氧运动','吸烟']))]
 #data = data.drop_duplicates(['uid','记录日期', 'rf'])
 data=data[data['uid']>44687]
+data=data.sort_values(['uid','记录日期'])
 data=data.reset_index(drop=True)
 date=data.duplicated(['uid','记录日期'],keep='last')
 first=data.duplicated(['uid','记录日期','rf'],keep='first')
 last=data.duplicated(['uid','记录日期','rf'],keep='last')
 print('宝妈营总人数：'+str(len(data['uid'].unique())))
+
 
 userid = []
 name = []
@@ -154,6 +155,7 @@ for i in range(len(data)):
                       +solidfat[row]+salt[row]+sugar[row]+totalheat[row]+nutrients[row]+alcohol[row]+water[row])
         row=row+1
         countf=0
+
 
 print(len(userid))
 print(len(f_fruit))
