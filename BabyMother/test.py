@@ -247,7 +247,30 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','组别','减肥时间段','减重值']
 dataframe.to_excel('/Users/martin_yan/Desktop/2.xlsx',index=False, encoding="utf_8_sig",columns=columns)
-"""
+
+
+
 data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
 data = data.drop_duplicates(['uid','记录日期', 'rf'])
 data.to_csv('/Users/martin_yan/Desktop/22.csv',index=False, encoding="utf_8_sig")
+"""
+
+
+data=pd.read_csv('/Users/martin_yan/Desktop/333.csv')
+data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['用户编号','初始体重值','日期','BMI'])
+data = pd.merge(data, data2, on='用户编号')
+print(data)
+id=[]
+name=[]
+reduce=[]
+time=[]
+bmi=[]
+for i in range(len(data)):
+    id.append(data.iloc[i]['用户编号'])
+    name.append(data.iloc[i]['姓名'])
+    reduce.append(data.iloc[i]['初始体重值']-data.iloc[i]['最后体重'])
+    time.append(data.iloc[i]['记录日期'])
+    bmi.append(data.iloc[i]['BMI'])
+dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'BMI':bmi,'减重值':reduce,'最后记录体重日期':time})
+columns = ['用户编号','姓名','BMI','减重值','最后记录体重日期']
+dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.25(全部).csv',index=False, encoding="utf_8_sig",columns=columns)
