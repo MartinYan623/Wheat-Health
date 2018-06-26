@@ -130,9 +130,11 @@ for i in range(len(data)):
     if data.iloc[i]['rf'] == '三大营养素组成':
         if first[i]==False and last[i]==True:
             f_nutrients1.append(data.iloc[i]['对比值'])
+
         if first[i] == True and last[i] == True and countf==0:
             f_nutrients2.append(data.iloc[i]['对比值'])
             countf=countf+1
+
         if first[i]==True and last[i]==False:
             nutrients.append(data.iloc[i]['rf得分'])
             f_nutrients3.append(data.iloc[i]['对比值'])
@@ -163,11 +165,9 @@ print(len(f_veg))
 print(len(f_wholegrain))
 print(len(f_refinegrain))
 print(len(f_diefiber))
-
 print(len(f_milk))
 print(len( f_fishshrimp))
 print(len(f_fattyacids))
-
 print(len(alcohol))
 print(len(f_nutrients1))
 print(len(f_nutrients2))
@@ -176,7 +176,6 @@ print(len(solidfat))
 print(len(f_salt))
 print(len(f_totalprotein))
 print(len(f_diefiber))
-
 print(len(totalscore))
 
 dataframe = pd.DataFrame({'用户编号': userid, '姓名': name, '记录日期': time,
@@ -207,5 +206,3 @@ columns = ['用户编号', '姓名', '记录日期', '水果摄入实际量', '�
                 '三大营养素脂肪对比值','三大营养素蛋白质对比值',  '三大营养素组成得分', '饮酒摄入实际量', '饮酒（酒精量，全天标准）得分', '饮水量', '饮水量得分','总得分']
 print(dataframe)
 dataframe.to_csv('/Users/martin_yan/Desktop/bdada.csv', index=False, encoding="utf_8_sig", columns=columns)
-
-
