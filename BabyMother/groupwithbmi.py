@@ -3,8 +3,8 @@ import numpy as np
 encoding='UTF-8'
 
 
-data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.18.csv')
-meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18.csv',usecols=['用户编号','姓名','BMI','完整记录天数'])
+data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.25.csv')
+meandata=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(总表／实际记录平均分).csv',usecols=['用户编号','姓名','BMI','完整记录天数'])
 data = data.drop_duplicates(['uid','日期'])
 data=data.reset_index(drop=True)
 data.drop('uid', inplace=True, axis=1)
@@ -57,10 +57,10 @@ group=[]
 reduce=[]
 time=[]
 username=[]
-#data=data[data['完整记录天数']>19]
+#data=data[data['完整记录天数']<25]
 #这里指体重实际记录天数
-data=data[data['实际记录天数']<20]
-#data=data[(data['实际记录天数']<20) | (data['完整记录天数']<20)]
+data=data[data['实际记录天数']<25]
+#data=data[(data['实际记录天数']<28) | (data['完整记录天数']<28)]
 data=data.reset_index(drop=True)
 print(len(data['用户编号'].unique()))
 
@@ -71,7 +71,7 @@ count1=0
 count2=0
 print(data)
 for i in range(len(data)):
-    if data.iloc[i]['BMI']>22:
+    if data.iloc[i]['BMI']>24:
         if note[i] == False:
             weight=data.iloc[i]['体重']
             count1=count1+1
@@ -79,7 +79,7 @@ for i in range(len(data)):
             username.append(data.iloc[i]['姓名'])
             reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
-            group.append("A组(BMI>22)")
+            group.append("A组(BMI>24)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
     else:
@@ -90,7 +90,7 @@ for i in range(len(data)):
             username.append(data.iloc[i]['姓名'])
             reduce.append(weight- data.iloc[i]['体重'])
             time.append(str(data.iloc[i - 1]['日期']) + ' ~ ' + str(data.iloc[i]['日期']))
-            group.append("B组(BMI<=22)")
+            group.append("B组(BMI<=24)")
             #score.append(data.iloc[i]['平均得分'])
             #BMI.append(data.iloc[i]['BMI'])
 

@@ -4,9 +4,11 @@ data=pd.read_csv('../data/宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,8,9,10,
 data2=pd.read_csv('../data/宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,8,9,10,12])
 data3=pd.read_csv('../data/宝妈营数据6.5-6.11.csv',usecols=[0,2,6,7,8,9,10,12])
 data4=pd.read_csv('../data/宝妈营数据6.12-6.18.csv',usecols=[0,2,6,7,8,9,10,12])
+data5=pd.read_csv('../data/宝妈营数据6.19-6.25.csv',usecols=[0,2,6,7,8,9,10,12])
 data=data.append(data2)
 data=data.append(data3)
 data=data.append(data4)
+data=data.append(data5)
 #用uid对数据排序，默认升序
 data=data[(True-data['rf'].isin(['有氧运动','吸烟']))]
 #data = data.drop_duplicates(['uid','记录日期', 'rf'])

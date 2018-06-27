@@ -206,10 +206,11 @@ print(data)
 
 
 #体重减重值是从入营第一周到目前周
-data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.18.csv')
+data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.25.csv')
 data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','日期'])
-data=data[data['日期']>'2018/6/11 0:00']
-data=data[data['日期']<'2018/6/2 0:00']
+data=data[data['日期']>'2018/6/18 0:00']
+data=data[data['日期']<'2018/6/26 0:00']
+data=data[(True-data['日期'].isin(['2018/6/2 0:00']))]
 data2=data2[data2['日期']<'2018/5/29 0:00']
 
 data = pd.merge(data, data2, on='姓名')
@@ -229,31 +230,17 @@ for i in range(len(data)):
         time.append(data.iloc[i]['日期_x'])
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce,'最后记录体重日期':time})
 columns = ['用户编号','姓名','减重值','最后记录体重日期']
-dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.18.csv',index=False, encoding="utf_8_sig",columns=columns)
+dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.25.csv',index=False, encoding="utf_8_sig",columns=columns)
 
 
-data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
-username=data.duplicated('姓名',keep='last')
-name=[]
-group=[]
-date=[]
-reduce=[]
-for i in range(len(data)):
-    if username[i]==False:
-        name.append(data.iloc[i]['姓名'])
-        group.append(data.iloc[i]['组别'])
-        date.append(data.iloc[i]['减肥时间段'])
-        reduce.append(data.iloc[i]['减重值'])
-dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
-columns=['姓名','组别','减肥时间段','减重值']
-dataframe.to_excel('/Users/martin_yan/Desktop/2.xlsx',index=False, encoding="utf_8_sig",columns=columns)
+
 
 
 
 data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
 data = data.drop_duplicates(['uid','记录日期', 'rf'])
 data.to_csv('/Users/martin_yan/Desktop/22.csv',index=False, encoding="utf_8_sig")
-"""
+
 
 
 data=pd.read_csv('/Users/martin_yan/Desktop/333.csv')
@@ -274,3 +261,20 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'BMI':bmi,'减重值':reduce,'最后记录体重日期':time})
 columns = ['用户编号','姓名','BMI','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.25(全部).csv',index=False, encoding="utf_8_sig",columns=columns)
+"""
+
+data=pd.read_csv('/Users/martin_yan/Desktop/饮食完整记录未达到24天以上 5.22-6.25.csv')
+username=data.duplicated('姓名',keep='last')
+name=[]
+group=[]
+date=[]
+reduce=[]
+for i in range(len(data)):
+    if username[i]==False:
+        name.append(data.iloc[i]['姓名'])
+        group.append(data.iloc[i]['组别'])
+        date.append(data.iloc[i]['减肥时间段'])
+        reduce.append(data.iloc[i]['减重值'])
+dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
+columns=['姓名','组别','减肥时间段','减重值']
+dataframe.to_excel('/Users/martin_yan/Desktop/饮食完整记录未达到24天以上 5.22-6.25.xlsx',index=False, encoding="utf_8_sig",columns=columns)

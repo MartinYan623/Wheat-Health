@@ -37,7 +37,7 @@ data=data[data['记录日期']< '2018/6/3 0:00']
 data=data[(True-data['记录日期'].isin(['2018/6/2 0:00']))]
 data = data.drop_duplicates(['用户编号','记录日期'],keep='first')
 data=data.reset_index(drop=True)
-
+print(len(data['用户编号'].unique()))
 first=data.duplicated(['用户编号'],keep='first')
 last=data.duplicated(['用户编号'],keep='last')
 meanscore=[]
@@ -52,13 +52,13 @@ for i in range (len(data)):
         meanscore.append(score/14)
         score=0
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'最后14天平均得分':meanscore})
-
+print(dataframe)
 data2 = pd.read_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.25(全部).csv',usecols=[0,2,3])
 dataframe2 = pd.merge(dataframe, data2, on='用户编号')
 print(dataframe2)
 
 #找出用户完整记录的天数
-data=pd.read_csv('/Users/martin_yan/Desktop/123.csv',usecols=[0,2,3,4])
+data=pd.read_csv('/Users/martin_yan/Desktop/记录餐数.csv',usecols=[0,2,3,4])
 #删除用户重复记录的行
 data = data.drop_duplicates(['uid','记录日期'])
 #删除某列值为空的行
