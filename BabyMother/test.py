@@ -234,9 +234,6 @@ dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.25.csv',
 
 
 
-
-
-
 data=pd.read_csv('/Users/martin_yan/Desktop/11.csv')
 data = data.drop_duplicates(['uid','记录日期', 'rf'])
 data.to_csv('/Users/martin_yan/Desktop/22.csv',index=False, encoding="utf_8_sig")
@@ -261,7 +258,7 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'BMI':bmi,'减重值':reduce,'最后记录体重日期':time})
 columns = ['用户编号','姓名','BMI','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.25(全部).csv',index=False, encoding="utf_8_sig",columns=columns)
-"""
+
 
 data=pd.read_csv('/Users/martin_yan/Desktop/饮食完整记录未达到24天以上 5.22-6.25.csv')
 username=data.duplicated('姓名',keep='last')
@@ -278,3 +275,36 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减重值':reduce})
 columns=['姓名','组别','减肥时间段','减重值']
 dataframe.to_excel('/Users/martin_yan/Desktop/饮食完整记录未达到24天以上 5.22-6.25.xlsx',index=False, encoding="utf_8_sig",columns=columns)
+
+"""
+
+data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv',usecols=['用户编号','姓名','年龄','BMI','减重值'])
+id=[]
+name=[]
+reduce=[]
+group=[]
+for i in range(len(data)):
+    if data.iloc[i]['BMI']>24 and data.iloc[i]['年龄']>36:
+        id.append(data.iloc[i]['用户编号'])
+        name.append(data.iloc[i]['姓名'])
+        reduce.append(data.iloc[i]['减重值'])
+        group.append('A组 BMI>24 and 年龄>36岁')
+    if data.iloc[i]['BMI']>24 and data.iloc[i]['年龄']<37:
+        id.append(data.iloc[i]['用户编号'])
+        name.append(data.iloc[i]['姓名'])
+        reduce.append(data.iloc[i]['减重值'])
+        group.append('B组 BMI>24 and 年龄<=36岁')
+    if data.iloc[i]['BMI']<24.01 and data.iloc[i]['年龄']>36:
+        id.append(data.iloc[i]['用户编号'])
+        name.append(data.iloc[i]['姓名'])
+        reduce.append(data.iloc[i]['减重值'])
+        group.append('C组 BMI<=24 and 年龄>36岁')
+    if data.iloc[i]['BMI']<24.01 and data.iloc[i]['年龄']<37:
+        id.append(data.iloc[i]['用户编号'])
+        name.append(data.iloc[i]['姓名'])
+        reduce.append(data.iloc[i]['减重值'])
+        group.append('D组 BMI<=24 and 年龄<=36岁')
+
+dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'组别':group,'减重值':reduce})
+columns=['用户编号','姓名','组别','减重值']
+dataframe.to_excel('/Users/martin_yan/Desktop/用户BMI年龄分组.xlsx',index=False, encoding="utf_8_sig",columns=columns)

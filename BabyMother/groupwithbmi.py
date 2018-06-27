@@ -59,7 +59,7 @@ time=[]
 username=[]
 #data=data[data['完整记录天数']<25]
 #这里指体重实际记录天数
-data=data[data['实际记录天数']<25]
+data=data[data['实际记录天数']>27]
 #data=data[(data['实际记录天数']<28) | (data['完整记录天数']<28)]
 data=data.reset_index(drop=True)
 print(len(data['用户编号'].unique()))
