@@ -2,7 +2,7 @@ import pandas as pd
 import datetime
 encoding='UTF-8'
 data=pd.read_csv('/Users/martin_yan/Desktop/babymother_data5.22-6.25.csv')
-info=pd.read_csv('../data/宝妈用户减重表5.22-6.25.csv',usecols=[1,2])
+info=pd.read_csv('../data/宝妈用户减重表5.22-6.25(全部).csv',usecols=[1,2])
 original=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
 birthday=pd.read_csv('../data/宝妈营用户生日.csv',usecols=['uid','年龄'])
 birthday.rename(columns={'uid':'用户编号'}, inplace = True)
@@ -106,7 +106,7 @@ for i in range(len(data)):
 
     if username[i]==False:
         num=num+1
-
+        """
         #除以实际记录天数
         dataframe = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
@@ -171,7 +171,7 @@ for i in range(len(data)):
                                    '平均得分': [score / 35], '减重值': [data.iloc[i][40]], '初始体重值': [data.iloc[i][41]],
                                    '减重百分比': [data.iloc[i][40] / data.iloc[i][41]], 'BMI': [data.iloc[i][42]],
                                    '年龄': [data.iloc[i][43]]})
-         """
+
         sec=True
         if num>1:
             sec=False
@@ -223,7 +223,7 @@ for i in range(len(data)):
         count = 0
 
 
-data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[1,4,5,6])
+data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计2.csv',usecols=[1,4,5,6])
 light=pd.read_csv('../data/轻食日统计.csv')
 data = pd.merge(data, light, on='姓名')
 print(len(data['姓名'].unique()))
@@ -277,7 +277,7 @@ for i in range(len(data)):
     if last[i] == False:
         name.append(data.iloc[i]['姓名'])
 
-
+        """
         #除以记录天数
         if countlight==0:
             meanlight.append(0)
@@ -299,7 +299,7 @@ for i in range(len(data)):
         meanlight.append(sum_light / 10)
         meanfnormal.append(sum_f_normal / 25)
         meannormal.append(sum_normal / 25)
-        """
+
 
 
         sum_light=0

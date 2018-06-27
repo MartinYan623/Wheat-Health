@@ -104,7 +104,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> hei.py : hei新的评分标准计算平均得分。
 
------> groupwothage.py : 以年龄分组，得到用户的每日累积减重值。
+-----> groupwithage.py : 以年龄分组，得到用户的每日累积减重值。
 
 -----> pca.py : PCA降低数据维度。核心代码如下：
 

@@ -3,7 +3,7 @@ encoding='UTF-8'
 data=pd.read_csv('/Users/martin_yan/Desktop/new_babymother_data5.22-6.25.csv')
 #HEI删除了四项指标
 #data.drop(['膳食纤维摄入实际量','膳食纤维摄入量得分','总热量摄入实际量','总热量摄入量得分','三大营养素摄入实际量','三大营养素组成得分','饮水量','饮水量得分'], inplace=True, axis=1)
-info=pd.read_csv('../data/宝妈用户减重表5.22-6.25.csv',usecols=[1,2])
+info=pd.read_csv('../data/宝妈用户减重表5.22-6.25(全部).csv',usecols=[1,2])
 original=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
 birthday=pd.read_csv('../data/宝妈营用户生日.csv',usecols=['uid','年龄'])
 birthday.rename(columns={'uid':'用户编号'}, inplace = True)
@@ -112,7 +112,7 @@ for i in range(len(data)):
 
     heiscore = heiscore+data.iloc[i][5]+data.iloc[i][7]+data.iloc[i][9]+data.iloc[i][11]+data.iloc[i][15]+data.iloc[i][17]+data.iloc[i][19]+data.iloc[i][21]+data.iloc[i][23]+data.iloc[i][25]+data.iloc[i][27]+data.iloc[i][36]
     balancescore=balancescore+data.iloc[i][5]+data.iloc[i][7]+data.iloc[i][9]+data.iloc[i][11]+data.iloc[i][13]+data.iloc[i][15]+data.iloc[i][17]+data.iloc[i][19]+data.iloc[i][21]+data.iloc[i][23]+data.iloc[i][25]+data.iloc[i][27]+data.iloc[i][34]+data.iloc[i][36]+data.iloc[i][38]
-    totalscore=totalscore+data.iloc[i][5]+data.iloc[i][7]+data.iloc[i][9]+data.iloc[i][11]+data.iloc[i][13]+data.iloc[i][15]+data.iloc[i][17]+data.iloc[i][19]+data.iloc[i][21]+data.iloc[i][23]+data.iloc[i][25]+data.iloc[i][27]+data.iloc[i][30]+data.iloc[i][34]+data.iloc[i][36]+data.iloc[i][38]
+    totalscore=totalscore+((data.iloc[i][5]+data.iloc[i][7]+data.iloc[i][9]+data.iloc[i][11]+data.iloc[i][13]+data.iloc[i][15]+data.iloc[i][17]+data.iloc[i][19]+data.iloc[i][21]+data.iloc[i][23]+data.iloc[i][25]+data.iloc[i][27]+data.iloc[i][34]+data.iloc[i][36]+data.iloc[i][38])/120)*90+(data.iloc[i][30]/10)*10
 
     if username[i]==False:
         num=num+1

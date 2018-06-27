@@ -9,20 +9,23 @@ encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
 
-"""
+
 #热量统计准备
 data=pd.read_csv('../data/宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,9,10,12])
 data2=pd.read_csv('../data/宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,9,10,12])
 data3=pd.read_csv('../data/宝妈营数据6.5-6.11.csv',usecols=[0,2,6,7,9,10,12])
 data4=pd.read_csv('../data/宝妈营数据6.12-6.18.csv',usecols=[0,2,6,7,9,10,12])
+data5=pd.read_csv('../data/宝妈营数据6.19-6.25.csv',usecols=[0,2,6,7,9,10,12])
 data=data.append(data2)
 data=data.append(data3)
 data=data.append(data4)
+data=data.append(data5)
 data=data.sort_values(['uid','记录日期'])
 data=data[data['uid']>44687]
 data=data[data['rf']=='总热量摄入量']
 data=data.reset_index(drop=True)
 data.to_csv('/Users/martin_yan/Desktop/11.csv', index=False, encoding="utf_8_sig")
+
 """
 
 data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[0,1,3,5,6])
@@ -102,6 +105,6 @@ plt.title(u'热量对比值区间分析')
 sns.heatmap(X)
 plt.show()
 
-
+"""
 
 

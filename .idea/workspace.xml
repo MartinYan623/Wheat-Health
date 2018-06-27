@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f213755-4ee9-44b1-9b64-170a9769b597" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/new_宝妈营数据6.19-6.25.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/babymother.py" afterPath="$PROJECT_DIR$/BabyMother/babymother.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/findlatestweight.py" afterPath="$PROJECT_DIR$/BabyMother/findlatestweight.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/groupwithbmi.py" afterPath="$PROJECT_DIR$/BabyMother/groupwithbmi.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/babymother_mean.py" afterPath="$PROJECT_DIR$/BabyMother/babymother_mean.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/hei.py" afterPath="$PROJECT_DIR$/BabyMother/hei.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/pca.py" afterPath="$PROJECT_DIR$/BabyMother/pca.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/prediction.py" afterPath="$PROJECT_DIR$/BabyMother/prediction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/lightfoodfor2.py" afterPath="$PROJECT_DIR$/BabyMother/lightfoodfor2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/numbermeal.py" afterPath="$PROJECT_DIR$/BabyMother/numbermeal.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BabyMother/test.py" afterPath="$PROJECT_DIR$/BabyMother/test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WheatGreen/modifycriterion.py" afterPath="$PROJECT_DIR$/WheatGreen/modifycriterion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WheatGreen/seekweight.py" afterPath="$PROJECT_DIR$/WheatGreen/seekweight.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/score.csv" afterPath="$PROJECT_DIR$/data/score.csv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,12 +18,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="groupwithbmi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BabyMother/groupwithbmi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="128" column="4" lean-forward="true" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+            <state relative-caret-position="358">
+              <caret line="61" column="27" lean-forward="false" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hei.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BabyMother/hei.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -80,15 +84,12 @@
         <option value="$PROJECT_DIR$/BabyMother/varianceanalusis.py" />
         <option value="$PROJECT_DIR$/BabyMother/lightfood.py" />
         <option value="$PROJECT_DIR$/BabyMother/lightfoodfor4.py" />
-        <option value="$PROJECT_DIR$/BabyMother/lightfoodfor2.py" />
         <option value="$PROJECT_DIR$/data/轻食日统计.csv" />
         <option value="$PROJECT_DIR$/data/宝妈营数据6.5-6.11.csv" />
         <option value="$PROJECT_DIR$/data/宝妈营数据6.12-6.18.csv" />
         <option value="$PROJECT_DIR$/BabyMother/userscore.py" />
         <option value="$PROJECT_DIR$/data/宝妈营数据6.19-6.25.csv" />
         <option value="$PROJECT_DIR$/data/宝妈用户减重表5.22-6.25(全部).csv" />
-        <option value="$PROJECT_DIR$/BabyMother/babymother_mean.py" />
-        <option value="$PROJECT_DIR$/BabyMother/numbermeal.py" />
         <option value="$PROJECT_DIR$/BabyMother/correlation.py" />
         <option value="$PROJECT_DIR$/BabyMother/groupwithbmi.py" />
         <option value="$PROJECT_DIR$/BabyMother/findlatestweight.py" />
@@ -98,14 +99,18 @@
         <option value="$PROJECT_DIR$/WheatGreen/modifycriterion.py" />
         <option value="$PROJECT_DIR$/BabyMother/babymother.py" />
         <option value="$PROJECT_DIR$/data/score.csv" />
-        <option value="$PROJECT_DIR$/BabyMother/hei.py" />
-        <option value="$PROJECT_DIR$/BabyMother/test.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/BabyMother/test.py" />
+        <option value="$PROJECT_DIR$/BabyMother/lightfoodfor2.py" />
+        <option value="$PROJECT_DIR$/BabyMother/numbermeal.py" />
+        <option value="$PROJECT_DIR$/BabyMother/babymother_mean.py" />
+        <option value="$PROJECT_DIR$/BabyMother/hei.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="33" />
+    <option name="y" value="25" />
     <option name="width" value="1440" />
     <option name="height" value="807" />
   </component>
@@ -143,6 +148,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -164,7 +170,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -267,7 +272,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Wheat-Health" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BabyMother/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BabyMother/hei.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -323,7 +328,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="807" extended-state="0" />
+    <frame x="33" y="25" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -356,24 +361,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BabyMother/varianceanalusis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BabyMother/clustering.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="43" column="2" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/cleandata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -419,20 +410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/lightfoodfor4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="89" column="7" lean-forward="true" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/lightfoodfor2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="62" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/轻食日统计.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1485">
@@ -465,13 +442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1027">
           <caret line="508" column="48" lean-forward="true" selection-start-line="508" selection-start-column="48" selection-end-line="508" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/indexes/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="2556" column="0" lean-forward="false" selection-start-line="2556" selection-start-column="0" selection-end-line="2556" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -567,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/numbermeal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BabyMother/correlation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -665,45 +628,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/babymother_mean.py">
+    <entry file="file://$PROJECT_DIR$/BabyMother/cleandata.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="137" column="97" lean-forward="true" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="97" />
+        <state relative-caret-position="300">
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/hei.py">
+    <entry file="file://$PROJECT_DIR$/BabyMother/varianceanalusis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="5" column="42" lean-forward="false" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        <state relative-caret-position="450">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BabyMother/findlatestweight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
+        <state relative-caret-position="375">
           <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/groupwithbmi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="61" column="27" lean-forward="false" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BabyMother/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="308" column="32" lean-forward="true" selection-start-line="308" selection-start-column="32" selection-end-line="308" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="128" column="4" lean-forward="true" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+        <state relative-caret-position="228">
+          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4635">
+          <caret line="310" column="3" lean-forward="false" selection-start-line="310" selection-start-column="3" selection-end-line="310" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/lightfoodfor4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="89" column="7" lean-forward="true" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/lightfoodfor2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/indexes/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="2521" column="0" lean-forward="false" selection-start-line="2521" selection-start-column="0" selection-end-line="2521" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/babymother_mean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="4" column="45" lean-forward="false" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/numbermeal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/groupwithbmi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="61" column="27" lean-forward="false" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BabyMother/hei.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
           <folding />
         </state>
       </provider>

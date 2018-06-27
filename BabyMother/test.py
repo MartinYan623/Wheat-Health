@@ -276,7 +276,7 @@ dataframe=pd.DataFrame({'姓名':name,'组别':group,'减肥时间段':date,'减
 columns=['姓名','组别','减肥时间段','减重值']
 dataframe.to_excel('/Users/martin_yan/Desktop/饮食完整记录未达到24天以上 5.22-6.25.xlsx',index=False, encoding="utf_8_sig",columns=columns)
 
-"""
+
 
 data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv',usecols=['用户编号','姓名','年龄','BMI','减重值'])
 id=[]
@@ -308,3 +308,4 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'组别':group,'减重值':reduce})
 columns=['用户编号','姓名','组别','减重值']
 dataframe.to_excel('/Users/martin_yan/Desktop/用户BMI年龄分组.xlsx',index=False, encoding="utf_8_sig",columns=columns)
+"""
