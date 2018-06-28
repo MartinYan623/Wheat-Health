@@ -29,6 +29,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---lightfoodfor2.py
             |            |---lightfoodfor4.py
             |            |---userscore.py
+            |            |---nutriment.py
             |
             |
             ---data|---all data for this project
@@ -124,7 +125,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> userscore.py : 从字符串str中提取出用户界面的用户得分，然后和其他表进行合并，目的是搜索出满足退款要求的用户。
 
-
+-----> nutriment.py : 三大营养素区间范围探索。
 
 LOG:
 
@@ -307,3 +308,5 @@ BMI分组，探求减重值和减重速率的变化。各种筛选条件下的�
 对94人总表-实际记录得分中删除离群点四个，分别是编号:44801、44912、44977、45032。删除后重新做相关减重性分析,MultipleR值从0.596785->0.613818 上升不少。
 
 而在总表-入营得分中删除离群点四个，分别编号为: 44852、44830、44912、44801。删除后重新做减重的分析,MiltipleR值从0.62659->0.725147 显著上升。
+
+探索三大营养素的范围，碳水化合物、脂肪和蛋白质在每日的占比区间。目前结果不太好，待改善。

@@ -10,6 +10,7 @@ encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
 data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[0,1,3,5,6])
+data = data.drop_duplicates(['uid','记录日期'])
 light=pd.read_csv('../data/轻食日统计.csv')
 data = pd.merge(data, light, on='姓名')
 print(len(data['姓名'].unique()))
