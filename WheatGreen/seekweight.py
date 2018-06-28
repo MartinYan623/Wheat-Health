@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-data = pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／入营平均分).csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/HEI_mean_babymother_data5.22-6.25(总表／实际记录得分).csv')
 #target = np.log(data['减重值'])
 #print ("Skew is:", target.skew())
 #plt.hist(target, color='blue')
@@ -9,9 +9,11 @@ data = pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体�
 balanced=[]
 totalheat=[]
 for i in range(len(data)):
-    score=data.iloc[i]['平均得分']
+    #score=data.iloc[i]['平均得分']
     totalheat.append(data.iloc[i]['总热量摄入量平均分'])
-    balanced.append((score-totalheat[i])/11)
+    #balanced.append((score-totalheat[i])/11)
+    balanced.append(data.iloc[i]['饮食均衡得分'] / 12)
+
 #print(balanced)
 best=0
 parameter=0

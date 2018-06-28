@@ -9,7 +9,7 @@ encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
 
-
+"""
 #热量统计准备
 data=pd.read_csv('../data/宝妈营数据5.22-5.28.csv',usecols=[0,2,6,7,9,10,12])
 data2=pd.read_csv('../data/宝妈营数据5.29-6.4.csv',usecols=[0,2,6,7,9,10,12])
@@ -78,7 +78,7 @@ for a in range(1,30):
                 countnormal=0
                 countlight=0
         dataframe=pd.DataFrame({'姓名':name,'热量管理较好天数':day})
-        origianl=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18.csv',usecols=['姓名','减重值'])
+        origianl=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv',usecols=['姓名','减重值'])
         new = pd.merge(origianl, dataframe, on='姓名')
         print('-----参数a:'+str(a)+',参数b:'+str(b)+'-------')
         value=new['减重值'].corr(new['热量管理较好天数'])
@@ -105,6 +105,6 @@ plt.title(u'热量对比值区间分析')
 sns.heatmap(X)
 plt.show()
 
-"""
+
 
 

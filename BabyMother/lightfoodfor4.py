@@ -37,13 +37,13 @@ vb=[]
 vc=[]
 vd=[]
 v=[]
-origianl=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.18.csv',usecols=['姓名','减重值'])
+origianl=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv',usecols=['姓名','减重值'])
 #根据自定义标准去统计用户管理热量较好的天数
-for a in range(20,25):
-    for b in range(20,25):
+for a in range(25,30):
+    for b in range(25,30):
         x1 = []
-        for c in range(5,12):
-            for d in range(5,12):
+        for c in range(8,15):
+            for d in range(8,15):
                 day = []
                 name = []
                 countlight = 0

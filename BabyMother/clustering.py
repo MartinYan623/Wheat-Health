@@ -4,16 +4,16 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn import preprocessing
 import numpy as np
-data=pd.read_csv('/Users/martin_yan/Desktop/222.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv')
 X=[]
 for i in range (len(data)):
     x=[]
-    x.append(data.iloc[i]['平均得分'])
-    x.append(data.iloc[i]['减重值'])
-    x.append(data.iloc[i]['总热量实际摄入平均量'])
-    x.append(data.iloc[i]['完整记录天数'])
+    #x.append(data.iloc[i]['平均得分'])
+    #x.append(data.iloc[i]['减重值'])
+    #x.append(data.iloc[i]['总热量实际摄入平均量'])
+    #x.append(data.iloc[i]['完整记录天数'])
     x.append(data.iloc[i]['BMI'])
-    #x.append(data.iloc[i]['年龄'])
+    x.append(data.iloc[i]['年龄'])
     X.append(x)
 
 #公式为：(X-mean)/std  计算时对每个属性/每列分别进行

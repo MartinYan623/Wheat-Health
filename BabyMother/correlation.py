@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
-data = pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／入营平均分).csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/精选用户数据2.csv')
 #data=data[data['记录天数']>3]
 data.drop(['用户编号'], inplace=True, axis=1)
 print(data)
