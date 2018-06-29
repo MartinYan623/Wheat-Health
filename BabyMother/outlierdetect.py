@@ -1,21 +1,17 @@
-from sklearn.cluster import KMeans
 from sklearn.neighbors import LocalOutlierFactor
+from sklearn.cluster import DBSCAN
+from sklearn.ensemble import IsolationForest
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
 from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
 
-data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(总表／入营平均分).csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(总表／实际记录平均分).csv')
 X=[]
 for i in range (len(data)):
     x=[]
     x.append(data.iloc[i]['平均得分'])
     x.append(data.iloc[i]['减重值'])
-    #x.append(data.iloc[i]['总热量实际摄入平均量'])
-    #x.append(data.iloc[i]['完整记录天数'])
-    #x.append(data.iloc[i]['BMI'])
-    #x.append(data.iloc[i]['年龄'])
     X.append(x)
 
 #公式为：(X-mean)/std  计算时对每个属性/每列分别进行
@@ -24,10 +20,18 @@ Y = np.array(X)
 Y_scaled = preprocessing.scale(Y)
 
 print(Y_scaled)
-# Kmeans聚类
-clf = KMeans(n_clusters=3)
+# DBscan聚类 检测异常点
+# 默认eps=0.5 min_samples=5
+clf=DBSCAN(eps=0.6,metric='euclidean',algorithm='auto')
+# 默认n_neighbors=20,contamination=0.1
+clf = LocalOutlierFactor(n_neighbors=10,contamination=0.04)
+
+# 孤立森林，默认n_estimators=100, contamination=0.1
+# 方法报错，存在bug，待fix
+#clf = IsolationForest(n_estimators=100, contamination=0.04)
 
 y_pred = clf.fit_predict(Y_scaled)
+#y_pred = clf.predict(Y_scaled)
 print(clf)
 print(y_pred)
 
