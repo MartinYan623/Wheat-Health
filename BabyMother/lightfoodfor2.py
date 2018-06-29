@@ -28,7 +28,7 @@ data.to_csv('/Users/martin_yan/Desktop/11.csv', index=False, encoding="utf_8_sig
 
 """
 
-
+"""
 data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[0,1,3,5,6])
 data = data.drop_duplicates(['uid','记录日期'])
 light=pd.read_csv('../data/轻食日统计.csv')
@@ -159,4 +159,4 @@ corr = numeric_features.corr()
 print (corr['减重值'].sort_values(ascending=False), '\n')
 
 
-"""
+
