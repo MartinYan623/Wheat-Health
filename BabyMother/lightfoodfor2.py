@@ -150,7 +150,7 @@ for i in range(len(data)):
         countnormal = 0
         countlight = 0
 dataframe=pd.DataFrame({'姓名':name,'轻食日热量管理较好天数':lightday,'普通日热量管理较好天数':normalday})
-origianl=pd.read_csv('/Users/martin_yan/Desktop/精选用户数据.csv')
+origianl=pd.read_csv('/Users/martin_yan/Desktop/精选用户数据2.csv')
 new = pd.merge(origianl, dataframe, on='姓名')
 print(new)
 numeric_features = new.select_dtypes(include=[np.number])

@@ -2,7 +2,7 @@
 
 环境配置
 
-本代码需要运行在python3.6环境下，运行前需要安装以下常用的python第三方库 pandas,numpy,matplotlib,seaborn和sklearn。
+本代码需要运行在python3.6环境下，运行前需要安装以下常用的python第三方库 pandas,numpy,matplotlib,seaborn,scipy和sklearn。
 
 代码结果如下:
 
@@ -30,6 +30,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---lightfoodfor4.py
             |            |---userscore.py
             |            |---nutriment.py
+            |            |---outlierdetect.py
             |
             |
             ---data|---all data for this project
@@ -126,6 +127,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> userscore.py : 从字符串str中提取出用户界面的用户得分，然后和其他表进行合并，目的是搜索出满足退款要求的用户。
 
 -----> nutriment.py : 三大营养素区间范围探索。
+
+-----> outlierdetect.py : 检测数据中存在的异常离群点。目前有DBscan、Local Outlier Factor and Isolcation Forest。
+
 
 LOG:
 
@@ -317,9 +321,11 @@ DBscan和K-means的区别参考资料: https://blog.csdn.net/weixin_39599711/art
 
 异常检测常见方法参考资料: http://baijiahao.baidu.com/s?id=1586454260987618585&wfr=spider&for=pc
 
-尝试使用其他的异常检测方法，例如:基于密度的Lof(距离度量)、基于随机二叉树的鼓励森林(超平面切类比蛋糕)。
+尝试使用其他的异常检测方法，例如:基于密度的Lof(距离度量)、基于随机二叉树的孤立森林(超平面切类比蛋糕)。
 
 Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
+
+和https://yq.aliyun.com/articles/152627?t=t1
 
 孤立森林isolation tree参考资料: https://www.jianshu.com/p/5af3c66e0410?utm_campaign=maleskine
 

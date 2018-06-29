@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import datetime
 encoding='UTF-8'
 
 
@@ -308,4 +309,114 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'组别':group,'减重值':reduce})
 columns=['用户编号','姓名','组别','减重值']
 dataframe.to_excel('/Users/martin_yan/Desktop/用户BMI年龄分组.xlsx',index=False, encoding="utf_8_sig",columns=columns)
+
+
+# 根据用户的减重值划分组，求每组的轻食日和普通日的热量平均对比值
+data=pd.read_csv('/Users/martin_yan/Desktop/精选用户数据3.csv',usecols=['用户编号','姓名','轻食日热量平均对比值','普通日热量平均对比值','减重值'])
+count1=0
+count2=0
+count3=0
+count4=0
+count5=0
+lightnum1=0
+normalnum1=0
+lightnum2=0
+normalnum2=0
+lightnum3=0
+normalnum3=0
+lightnum4=0
+normalnum4=0
+lightnum5=0
+normalnum5=0
+for i in range (len(data)):
+    if data.iloc[i]['减重值']<1:
+        count1=count1+1
+        lightnum1 = lightnum1+data.iloc[i]['轻食日热量平均对比值']
+        normalnum1 = normalnum1 + data.iloc[i]['普通日热量平均对比值']
+    if data.iloc[i]['减重值']>0.99 and data.iloc[i]['减重值']<2:
+        count2=count2+1
+        lightnum2 = lightnum2 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum2 = normalnum2 + data.iloc[i]['普通日热量平均对比值']
+    if data.iloc[i]['减重值']>1.99 and data.iloc[i]['减重值']<3:
+        count3=count3+1
+        lightnum3 = lightnum3 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum3 = normalnum3 + data.iloc[i]['普通日热量平均对比值']
+    if data.iloc[i]['减重值']>2.99 and data.iloc[i]['减重值']<4:
+        count4=count4+1
+        lightnum4 = lightnum4 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum4 = normalnum4 + data.iloc[i]['普通日热量平均对比值']
+    if data.iloc[i]['减重值']>3.99:
+        count5=count5+1
+        lightnum5 = lightnum5 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum5 = normalnum5 + data.iloc[i]['普通日热量平均对比值']
+
+lightnum1=lightnum1/count1
+lightnum2=lightnum2/count2
+lightnum3=lightnum3/count3
+lightnum4=lightnum4/count4
+lightnum5=lightnum5/count5
+normalnum1=normalnum1/count1
+normalnum2=normalnum2/count2
+normalnum3=normalnum3/count3
+normalnum4=normalnum4/count4
+normalnum5=normalnum5/count5
+print('人数:'+ str(count1)+',轻食日平均对比值:'+str(lightnum1)+',普通日平均对比值:'+str(normalnum1))
+print('人数:'+ str(count2)+',轻食日平均对比值:'+str(lightnum2)+',普通日平均对比值:'+str(normalnum2))
+print('人数:'+ str(count3)+',轻食日平均对比值:'+str(lightnum3)+',普通日平均对比值:'+str(normalnum3))
+print('人数:'+ str(count4)+',轻食日平均对比值:'+str(lightnum4)+',普通日平均对比值:'+str(normalnum4))
+print('人数:'+ str(count5)+',轻食日平均对比值:'+str(lightnum5)+',普通日平均对比值:'+str(normalnum5))
 """
+
+data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[0,1,3,5,6])
+data = data.drop_duplicates(['uid','记录日期'])
+light=pd.read_csv('../data/轻食日统计.csv')
+data = pd.merge(data, light, on='姓名')
+print(len(data['姓名'].unique()))
+lightday=[]
+
+# 判断某天是否为用户的轻食日
+for i in range(len(data)):
+    month=data.iloc[i]['记录日期'].split('/')[1]
+    day=data.iloc[i]['记录日期'].split('/')[2].split(' ')[0]
+    light1=data.iloc[i]['轻食日1']
+    light2=data.iloc[i]['轻食日2']
+    anyday=datetime.datetime(2018,int(month),int(day)).strftime("%w")
+    if int(light1)==int(anyday) or int(light2)==int(anyday):
+        lightday.append(1)
+    else:
+        lightday.append(0)
+
+data['是否为轻食日']=lightday
+first=data.duplicated('姓名',keep='first')
+last=data.duplicated('姓名',keep='last')
+print(data)
+
+score=0
+countlight=0
+lightscore1=[]
+lightscore2=[]
+name=[]
+id=[]
+for i in range(len(data)):
+    number = data.iloc[i]['对比值']
+    if data.iloc[i]['是否为轻食日'] == 1:
+        countlight = countlight + 1
+        if number>74 and number<126:
+            score=score+10
+        if number < 74 and number > 65.99 and number>126 and number<134.01:
+            score = score + 5
+    if last[i]==False:
+        id.append(data.iloc[i]['uid'])
+        name.append(data.iloc[i]['姓名'])
+        if countlight==0:
+            lightscore1.append(0)
+        else:
+            lightscore1.append(score/countlight)
+        lightscore2.append(score / 10)
+        score=0
+        countlight=0
+
+meanheat=pd.DataFrame({'用户编号':id,'姓名':name,'轻食日热量平均分(实际记录天数)':lightscore1,'轻食日热量平均分(入营天数)':lightscore2})
+mean=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(总表／实际记录平均分).csv',usecols=['姓名','减重值'])
+data = pd.merge(mean, meanheat, on='姓名')
+data.to_csv('/Users/martin_yan/Desktop/21312321.csv', index=False, encoding="utf_8_sig")

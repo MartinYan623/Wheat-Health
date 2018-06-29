@@ -6,11 +6,11 @@ from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
 
-data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(总表／实际记录平均分).csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv')
 X=[]
 for i in range (len(data)):
     x=[]
-    x.append(data.iloc[i]['平均得分'])
+    x.append(data.iloc[i]['轻食日热量平均对比值'])
     x.append(data.iloc[i]['减重值'])
     X.append(x)
 
@@ -22,9 +22,9 @@ Y_scaled = preprocessing.scale(Y)
 print(Y_scaled)
 # DBscan聚类 检测异常点
 # 默认eps=0.5 min_samples=5
-clf=DBSCAN(eps=0.6,metric='euclidean',algorithm='auto')
+clf=DBSCAN(eps=0.8,metric='euclidean',algorithm='auto')
 # 默认n_neighbors=20,contamination=0.1
-clf = LocalOutlierFactor(n_neighbors=10,contamination=0.04)
+#clf = LocalOutlierFactor(n_neighbors=10,contamination=0.04)
 
 # 孤立森林，默认n_estimators=100, contamination=0.1
 # 方法报错，存在bug，待fix
