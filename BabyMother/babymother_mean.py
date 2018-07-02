@@ -106,7 +106,7 @@ for i in range(len(data)):
 
     if username[i]==False:
         num=num+1
-        """
+
         #除以实际记录天数
         dataframe = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
@@ -171,7 +171,7 @@ for i in range(len(data)):
                                    '平均得分': [score / 35], '减重值': [data.iloc[i][40]], '初始体重值': [data.iloc[i][41]],
                                    '减重百分比': [data.iloc[i][40] / data.iloc[i][41]], 'BMI': [data.iloc[i][42]],
                                    '年龄': [data.iloc[i][43]]})
-
+        """
         sec=True
         if num>1:
             sec=False
@@ -183,7 +183,7 @@ for i in range(len(data)):
                     '三大营养素蛋白质平均对比值', '三大营养素组成平均分', '饮酒实际摄入平均量',
                     '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','初始体重值','减重值','减重百分比']
 
-        dataframe.to_csv('/Users/martin_yan/Desktop/2.csv', index=False, encoding="utf_8_sig",
+        dataframe.to_csv('/Users/martin_yan/Desktop/21.csv', index=False, encoding="utf_8_sig",
                           columns=columns,mode='a',header=sec)
 
         sum_fruit = 0
@@ -223,7 +223,7 @@ for i in range(len(data)):
         count = 0
 
 
-data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计2.csv',usecols=[1,4,5,6])
+data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[1,4,5,6])
 light=pd.read_csv('../data/轻食日统计.csv')
 data = pd.merge(data, light, on='姓名')
 print(len(data['姓名'].unique()))
@@ -277,7 +277,7 @@ for i in range(len(data)):
     if last[i] == False:
         name.append(data.iloc[i]['姓名'])
 
-        """
+
         #除以记录天数
         if countlight==0:
             meanlight.append(0)
@@ -299,7 +299,7 @@ for i in range(len(data)):
         meanlight.append(sum_light / 10)
         meanfnormal.append(sum_f_normal / 25)
         meannormal.append(sum_normal / 25)
-
+        """
 
 
         sum_light=0
@@ -310,6 +310,6 @@ for i in range(len(data)):
         countnormal=0
 
 meanheat=pd.DataFrame({'姓名':name,'轻食日热量平均摄入值':meanflight,'普通日热量平均摄入值':meanfnormal,'轻食日热量平均对比值':meanlight,'普通日热量平均对比值':meannormal})
-mean=pd.read_csv('/Users/martin_yan/Desktop/2.csv')
+mean=pd.read_csv('/Users/martin_yan/Desktop/21.csv')
 data = pd.merge(mean, meanheat, on='姓名')
-data.to_csv('/Users/martin_yan/Desktop/3.csv', index=False, encoding="utf_8_sig")
+data.to_csv('/Users/martin_yan/Desktop/31.csv', index=False, encoding="utf_8_sig")

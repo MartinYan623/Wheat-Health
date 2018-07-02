@@ -331,3 +331,11 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 和https://blog.csdn.net/u013709270/article/details/73436588
 
+7.2 分别探究轻食日和普通日的热量区间范围。
+
+修正之前陈小姐的热量对比值错误数据。(5.29日)
+
+分别从分数和减重值／轻食日或普通日的热量对比值和减重值 两个角度去删除离群点。
+
+
+

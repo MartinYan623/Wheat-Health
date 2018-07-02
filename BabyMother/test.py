@@ -371,7 +371,7 @@ data.to_csv('/Users/martin_yan/Desktop/21312321.csv', index=False, encoding="utf
 
 
 # 根据用户的减重值划分组，求每组的轻食日和普通日的热量平均对比值
-data=pd.read_csv('/Users/martin_yan/Desktop/删除普通日热量对比值异常点.csv',usecols=['用户编号','姓名','轻食日热量平均对比值','普通日热量平均对比值','减重值'])
+data=pd.read_csv('/Users/martin_yan/Desktop/普通日对比值与减重值离群点删除-5周记录得分.csv',usecols=['用户编号','姓名','轻食日热量平均对比值','普通日热量平均对比值','减重值'])
 count1=0
 count2=0
 count3=0

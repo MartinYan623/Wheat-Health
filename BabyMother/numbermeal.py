@@ -3,7 +3,7 @@ encoding='UTF-8'
 
 #找出用户完整记录的天数
 data=pd.read_csv('/Users/martin_yan/Desktop/记录餐数.csv',usecols=[0,2,3,4])
-completedata=pd.read_csv('/Users/martin_yan/Desktop/3.csv')
+completedata=pd.read_csv('/Users/martin_yan/Desktop/31.csv')
 helper=pd.read_csv('../data/宝妈营助理.csv',usecols=[2,3])
 #data=data[data['记录日期']>'2018/5/28 0:00']
 #删除用户重复记录的行
