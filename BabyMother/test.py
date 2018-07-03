@@ -313,6 +313,102 @@ dataframe.to_excel('/Users/martin_yan/Desktop/用户BMI年龄分组.xlsx',index=
 
 
 
+
+
+# 根据用户的减重值划分组，求每组的轻食日和普通日的热量平均对比值
+data=pd.read_csv('/Users/martin_yan/Desktop/普通日对比值与减重值离群点删除-5周记录得分.csv',usecols=['用户编号','姓名','轻食日热量平均对比值','普通日热量平均对比值','减重值'])
+count1=0
+count2=0
+count3=0
+count4=0
+count5=0
+lightnum1=0
+normalnum1=0
+lightnum2=0
+normalnum2=0
+lightnum3=0
+normalnum3=0
+lightnum4=0
+normalnum4=0
+lightnum5=0
+normalnum5=0
+
+light1=[]
+light2=[]
+light3=[]
+light4=[]
+light5=[]
+normal1=[]
+normal2=[]
+normal3=[]
+normal4=[]
+normal5=[]
+
+for i in range (len(data)):
+    if data.iloc[i]['减重值']<1:
+        count1=count1+1
+        lightnum1 = lightnum1+data.iloc[i]['轻食日热量平均对比值']
+        normalnum1 = normalnum1 + data.iloc[i]['普通日热量平均对比值']
+        light1.append(data.iloc[i]['轻食日热量平均对比值'])
+        normal1.append(data.iloc[i]['普通日热量平均对比值'])
+    if data.iloc[i]['减重值']>0.99 and data.iloc[i]['减重值']<2:
+        count2=count2+1
+        lightnum2 = lightnum2 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum2 = normalnum2 + data.iloc[i]['普通日热量平均对比值']
+        light2.append(data.iloc[i]['轻食日热量平均对比值'])
+        normal2.append(data.iloc[i]['普通日热量平均对比值'])
+    if data.iloc[i]['减重值']>1.99 and data.iloc[i]['减重值']<3:
+        count3=count3+1
+        lightnum3 = lightnum3 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum3 = normalnum3 + data.iloc[i]['普通日热量平均对比值']
+
+        light3.append(data.iloc[i]['轻食日热量平均对比值'])
+        normal3.append(data.iloc[i]['普通日热量平均对比值'])
+    if data.iloc[i]['减重值']>2.99 and data.iloc[i]['减重值']<4:
+        count4=count4+1
+        lightnum4 = lightnum4 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum4 = normalnum4 + data.iloc[i]['普通日热量平均对比值']
+
+        light4.append(data.iloc[i]['轻食日热量平均对比值'])
+        normal4.append(data.iloc[i]['普通日热量平均对比值'])
+    if data.iloc[i]['减重值']>3.99:
+        count5=count5+1
+        lightnum5 = lightnum5 + data.iloc[i]['轻食日热量平均对比值']
+        normalnum5 = normalnum5 + data.iloc[i]['普通日热量平均对比值']
+
+        light5.append(data.iloc[i]['轻食日热量平均对比值'])
+        normal5.append(data.iloc[i]['普通日热量平均对比值'])
+
+lightnum1=lightnum1/count1
+lightnum2=lightnum2/count2
+lightnum3=lightnum3/count3
+lightnum4=lightnum4/count4
+lightnum5=lightnum5/count5
+normalnum1=normalnum1/count1
+normalnum2=normalnum2/count2
+normalnum3=normalnum3/count3
+normalnum4=normalnum4/count4
+normalnum5=normalnum5/count5
+print('人数:'+ str(count1)+',轻食日平均对比值:'+str(lightnum1)+',普通日平均对比值:'+str(normalnum1))
+print('人数:'+ str(count2)+',轻食日平均对比值:'+str(lightnum2)+',普通日平均对比值:'+str(normalnum2))
+print('人数:'+ str(count3)+',轻食日平均对比值:'+str(lightnum3)+',普通日平均对比值:'+str(normalnum3))
+print('人数:'+ str(count4)+',轻食日平均对比值:'+str(lightnum4)+',普通日平均对比值:'+str(normalnum4))
+print('人数:'+ str(count5)+',轻食日平均对比值:'+str(lightnum5)+',普通日平均对比值:'+str(normalnum5))
+
+dataframe1=pd.DataFrame({'轻食日':light1,'普通日':normal1 })
+dataframe2=pd.DataFrame({'轻食日':light2,'普通日':normal2 })
+dataframe3=pd.DataFrame({'轻食日':light3,'普通日':normal3 })
+dataframe4=pd.DataFrame({'轻食日':light4,'普通日':normal4 })
+dataframe5=pd.DataFrame({'轻食日':light5,'普通日':normal5 })
+print(dataframe1['普通日'].describe())
+print(dataframe2['普通日'].describe())
+print(dataframe3['普通日'].describe())
+print(dataframe4['普通日'].describe())
+print(dataframe5['普通日'].describe())
+
+"""
+
+
 data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[0,1,3,5,6])
 data = data.drop_duplicates(['uid','记录日期'])
 light=pd.read_csv('../data/轻食日统计.csv')
@@ -337,90 +433,87 @@ first=data.duplicated('姓名',keep='first')
 last=data.duplicated('姓名',keep='last')
 print(data)
 
-score=0
+score1=0
+score2=0
 countlight=0
+countnormal=0
 lightscore1=[]
 lightscore2=[]
+normalscore1=[]
+normalscore2=[]
+totalscore1=[]
+totalscore2=[]
+day1=[]
+day2=[]
 name=[]
 id=[]
 for i in range(len(data)):
     number = data.iloc[i]['对比值']
     if data.iloc[i]['是否为轻食日'] == 1:
         countlight = countlight + 1
-        if number>74 and number<126:
-            score=score+10
-        if (number < 74.01 and number > 65.99) or (number>126.01 and number<134.01):
-            score = score + 5
+        # [92-108]
+        if number>91.99 and number<108.01:
+            score1=score1+10
+        # [83-92) or (108-117]
+        if (number < 92 and number > 82.99) or (number>108 and number<117.01):
+            score1 = score1 + 8
+        # [76-83) or (117-124]
+        if (number < 83 and number > 75.99) or (number>117 and number<124.01):
+            score1 = score1 + 6
+        # [66-76) or (124-134]
+        if (number < 76 and number > 65.99) or (number > 124 and number < 134.01):
+            score1 = score1 + 4
+        # [60 - 66) or (134 - 140]
+        if (number < 66 and number > 59.99) or (number > 134 and number < 140.01):
+            score1 = score1 + 2
+        # 其余 <60 or >140
+
+    else:
+        countnormal=countnormal+1
+        # [82 - 109]
+        if number>81.99 and number<109.01:
+            score2=score2+10
+        # [76-82)
+        if number>75.99 and number<82:
+            score2=score2+8
+        # [65-76)
+        if number > 64.99 and number < 76:
+            score2=score2+5
+        # [60-65)
+        if number>59.99 and number<65:
+            score2=score2+2
+        # 其余 <60 or >109
+
     if last[i]==False:
         id.append(data.iloc[i]['uid'])
         name.append(data.iloc[i]['姓名'])
         if countlight==0:
             lightscore1.append(0)
         else:
-            lightscore1.append(score/countlight)
-        lightscore2.append(score / 10)
-        score=0
+            lightscore1.append(score1/countlight)
+        lightscore2.append(score1 / 10)
+        day1.append(countlight)
+        if countnormal==0:
+            normalscore1.append(0)
+        else:
+            normalscore1.append(score2/countnormal)
+        normalscore2.append(score2/25)
+        day2.append(countnormal)
+        totalscore1.append((score1+score2)/(countnormal+countlight))
+        totalscore2.append((score1+score2)/35)
+
+        score1=0
+        score2=0
         countlight=0
+        countnormal=0
 
-meanheat=pd.DataFrame({'用户编号':id,'姓名':name,'轻食日热量平均分(实际记录天数)':lightscore1,'轻食日热量平均分(入营天数)':lightscore2})
+meanheat=pd.DataFrame({'用户编号':id,'姓名':name,'轻食日天数':day1,'普通日天数':day2,'轻食日热量平均分(实际记录天数)':lightscore1,'轻食日热量平均分(入营天数)':lightscore2,
+                       '普通日热量平均分(实际记录天数)':normalscore1,'普通日热量平均分(入营天数)':normalscore2,
+                       '总热量摄入平均分(实际记录天数)': totalscore1, '总热量摄入平均分(入营天数)': totalscore2
+                       })
 mean=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(总表／实际记录平均分).csv',usecols=['姓名','减重值'])
-data = pd.merge(mean, meanheat, on='姓名')
-data.to_csv('/Users/martin_yan/Desktop/21312321.csv', index=False, encoding="utf_8_sig")
-
-"""
-
-
-# 根据用户的减重值划分组，求每组的轻食日和普通日的热量平均对比值
-data=pd.read_csv('/Users/martin_yan/Desktop/普通日对比值与减重值离群点删除-5周记录得分.csv',usecols=['用户编号','姓名','轻食日热量平均对比值','普通日热量平均对比值','减重值'])
-count1=0
-count2=0
-count3=0
-count4=0
-count5=0
-lightnum1=0
-normalnum1=0
-lightnum2=0
-normalnum2=0
-lightnum3=0
-normalnum3=0
-lightnum4=0
-normalnum4=0
-lightnum5=0
-normalnum5=0
-for i in range (len(data)):
-    if data.iloc[i]['减重值']<1:
-        count1=count1+1
-        lightnum1 = lightnum1+data.iloc[i]['轻食日热量平均对比值']
-        normalnum1 = normalnum1 + data.iloc[i]['普通日热量平均对比值']
-    if data.iloc[i]['减重值']>0.99 and data.iloc[i]['减重值']<2:
-        count2=count2+1
-        lightnum2 = lightnum2 + data.iloc[i]['轻食日热量平均对比值']
-        normalnum2 = normalnum2 + data.iloc[i]['普通日热量平均对比值']
-    if data.iloc[i]['减重值']>1.99 and data.iloc[i]['减重值']<3:
-        count3=count3+1
-        lightnum3 = lightnum3 + data.iloc[i]['轻食日热量平均对比值']
-        normalnum3 = normalnum3 + data.iloc[i]['普通日热量平均对比值']
-    if data.iloc[i]['减重值']>2.99 and data.iloc[i]['减重值']<4:
-        count4=count4+1
-        lightnum4 = lightnum4 + data.iloc[i]['轻食日热量平均对比值']
-        normalnum4 = normalnum4 + data.iloc[i]['普通日热量平均对比值']
-    if data.iloc[i]['减重值']>3.99:
-        count5=count5+1
-        lightnum5 = lightnum5 + data.iloc[i]['轻食日热量平均对比值']
-        normalnum5 = normalnum5 + data.iloc[i]['普通日热量平均对比值']
-
-lightnum1=lightnum1/count1
-lightnum2=lightnum2/count2
-lightnum3=lightnum3/count3
-lightnum4=lightnum4/count4
-lightnum5=lightnum5/count5
-normalnum1=normalnum1/count1
-normalnum2=normalnum2/count2
-normalnum3=normalnum3/count3
-normalnum4=normalnum4/count4
-normalnum5=normalnum5/count5
-print('人数:'+ str(count1)+',轻食日平均对比值:'+str(lightnum1)+',普通日平均对比值:'+str(normalnum1))
-print('人数:'+ str(count2)+',轻食日平均对比值:'+str(lightnum2)+',普通日平均对比值:'+str(normalnum2))
-print('人数:'+ str(count3)+',轻食日平均对比值:'+str(lightnum3)+',普通日平均对比值:'+str(normalnum3))
-print('人数:'+ str(count4)+',轻食日平均对比值:'+str(lightnum4)+',普通日平均对比值:'+str(normalnum4))
-print('人数:'+ str(count5)+',轻食日平均对比值:'+str(lightnum5)+',普通日平均对比值:'+str(normalnum5))
+data = pd.merge(meanheat,mean, on='姓名')
+columns=['用户编号','姓名','减重值','轻食日天数','普通日天数','轻食日热量平均分(实际记录天数)','轻食日热量平均分(入营天数)',
+                       '普通日热量平均分(实际记录天数)','普通日热量平均分(入营天数)',
+                       '总热量摄入平均分(实际记录天数)', '总热量摄入平均分(入营天数)']
+data.to_csv('/Users/martin_yan/Desktop/新热量区间换算热量分值.csv', index=False, encoding="utf_8_sig",columns=columns)
