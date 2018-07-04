@@ -31,6 +31,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---userscore.py
             |            |---nutriment.py
             |            |---outlierdetect.py
+            |            |---newheatscore.py
             |
             |
             ---data|---all data for this project
@@ -129,6 +130,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> nutriment.py : 三大营养素区间范围探索。
 
 -----> outlierdetect.py : 检测数据中存在的异常离群点。目前有DBscan、Local Outlier Factor and Isolcation Forest。
+
+-----> newheatscore.py : 使用新区间换算用户的新热量得分。
+
 
 
 LOG:
@@ -337,5 +341,8 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 分别从分数和减重值／轻食日或普通日的热量对比值和减重值 两个角度去删除离群点。
 
+7.3 根据新的热量区间范围换算用户的新热量得分,包括: 轻食日平均得分，普通日平均得分，和总热量摄入平均分。
+
+整理目前为止所做的数据维度、数据清洗、数据统计与分析、预测等。
 
 
