@@ -6,11 +6,11 @@ from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
 
-data=pd.read_csv('/Users/martin_yan/Desktop/mean_babymother_data5.22-6.25(体重跨度5周／实际记录平均分).csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/444.csv')
 X=[]
 for i in range (len(data)):
     x=[]
-    x.append(data.iloc[i]['平均得分'])
+    x.append(data.iloc[i]['新饮食得分(100制)'])
     x.append(data.iloc[i]['减重值'])
     X.append(x)
 

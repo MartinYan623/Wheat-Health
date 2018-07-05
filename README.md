@@ -32,6 +32,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---nutriment.py
             |            |---outlierdetect.py
             |            |---newheatscore.py
+            |            |---new.py
             |
             |
             ---data|---all data for this project
@@ -133,7 +134,7 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> newheatscore.py : 使用新区间换算用户的新热量得分。
 
-
+-----> new.py : 将预处理合并到一个类中，一次性输出总表。包括HEI分数(100分)、均衡饮食得分(120分)和新饮食得分(100制)。
 
 LOG:
 
@@ -349,6 +350,7 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 将热量得分值划分为轻食日热量得分和普通日热量得分，寻找各自的权重值。
 
+7.5 整理宝妈营五周所有数据的，各指标和减重值及减重百分比的相关性。
 
 
 
