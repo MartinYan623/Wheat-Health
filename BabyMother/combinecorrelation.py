@@ -2,7 +2,7 @@ import pandas as pd
 encoding='UTF-8'
 import matplotlib.pyplot as plt
 # 将多周多个表相关性按相同指标合并 并绘制折线图
-data=pd.read_csv('/Users/martin_yan/Desktop/90人 记录得分 减重值.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/体重跨度各周 入营得分 减重百分比.csv')
 print(data)
 reduce=[]
 percent=[]
