@@ -352,5 +352,13 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 7.5 整理宝妈营五周所有数据的，各指标和减重值及减重百分比的相关性。
 
+7.6 利用matplotlib绘制折线图。以下代码可以设置数字标签:
 
+#for a, b in zip(week, newscore100):
+
+#    plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
+
+将绘制后的图片保存。
+
+#plt.savefig('/Users/martin_yan/Desktop/test.png', dpi=300)
 

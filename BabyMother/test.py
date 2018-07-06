@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import datetime
 encoding='UTF-8'
-
+import matplotlib.pyplot as plt
 
 """
 data=pd.read_csv('data/宝妈用户初始体重表.csv')
@@ -431,9 +431,6 @@ dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-6.4(全部
 
 
 
-
-"""
-
 #体重减重值是从入营第一周到目前周
 data=pd.read_csv('../data/宝妈用户每日体重变化5.22-5.28.csv')
 data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','日期'])
@@ -455,3 +452,7 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce,'最后记录体重日期':time})
 columns = ['用户编号','姓名','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-5.28.csv',index=False, encoding="utf_8_sig",columns=columns)
+
+"""
+
+
