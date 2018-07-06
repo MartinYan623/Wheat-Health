@@ -9,9 +9,10 @@ from xgboost import XGBRegressor
 from sklearn import svm
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression as LR
+import pgmpy
 
-
-train=pd.read_csv('/Users/martin_yan/Desktop/饮食均分与减重值离群点删除-总表记录得分.csv')
+train=pd.read_csv('/Users/martin_yan/Desktop/饮食均分与减重值离群点删除-总表入营得分.csv')
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
 #选取部分属性作为预测标准
@@ -30,7 +31,11 @@ predictors=['记录天数','平均得分','完整记录天数','膳食纤维摄�
 
 
 target=train['减重值']
-x_train, x_test, y_train, y_test = train_test_split(train[predictors], target,test_size=.05)
+x_train, x_test, y_train, y_test = train_test_split(train[predictors], target,test_size=.1)
+
+
+"""
+
 algorithms=[
 RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1),
 #svm.SVR(C=1.0, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma='auto',kernel='rbf', max_iter=-1, shrinking=True, tol=0.001, verbose=False)
@@ -47,7 +52,6 @@ print ('RMSE is: \n', mean_squared_error(y_test, predictions))
 
 
 
-"""
 #lr=linear_model.LinearRegression()
 #lr=linear_model.RidgeCV(alphas=np.logspace(-3, 2, 100)),
 #lr=XGBRegressor(max_depth=5)
@@ -114,3 +118,6 @@ for i in range(0,50):
     print('最小的rmse值:'+str(best)+',最好的权重a:'+str(parameter))
 
 """
+
+
+

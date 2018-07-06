@@ -2,7 +2,7 @@ import pandas as pd
 encoding='UTF-8'
 import matplotlib.pyplot as plt
 # 将多周多个表相关性按相同指标合并 并绘制折线图
-data=pd.read_csv('/Users/martin_yan/Desktop/体重跨度各周 入营得分 减重百分比.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/90人 记录得分 减重值.csv')
 print(data)
 reduce=[]
 percent=[]
@@ -167,26 +167,34 @@ dataframe=pd.DataFrame({'减重值':reduce,'减重百分比':percent,'膳食纤�
 #重新设置DataFrame的index名称
 dataframe.index = pd.Series(['第一周','第二周','第三周','第四周','第五周'])
 #数据行列转值
-dataframe=dataframe.T
+#dataframe=dataframe.T
 
-"""
+
 week=[1,2,3,4,5]
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
 plt.title('各指标随时间相关性变化')
 plt.xlabel('周数')
 plt.ylabel('MultipleR值')
+
 plt.plot(week,newscore100, label='新饮食得分(100制)',marker='o')
 plt.plot(week,banlanced120,  label='饮食均衡得分(120分)',marker='o')
 plt.plot(week,HEI100,label='HEI平均得分(100分)',marker='o')
+plt.plot(week,bmi, label='BMI',marker='o')
+plt.plot(week,age,  label='年龄',marker='o')
+plt.plot(week,completeday,label='完整记录天数',marker='o')
+plt.plot(week,day,label='记录天数',marker='o')
+
+
+
 plt.legend()
 # 设置数字标签
 #for a, b in zip(week, newscore100):
 #    plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
 plt.savefig('/Users/martin_yan/Desktop/test.png', dpi=300)
 plt.show()
-"""
 
 
-dataframe.to_excel('/Users/martin_yan/Desktop/33333.xlsx', index=True, encoding="utf_8_sig")
+
+#dataframe.to_excel('/Users/martin_yan/Desktop/33333.xlsx', index=True, encoding="utf_8_sig")
 
