@@ -6,11 +6,11 @@ from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
 
-data=pd.read_csv('/Users/martin_yan/Desktop/444.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/HEI_mean_babymother_data5.22-6.25(总表／入营得分).csv')
 X=[]
 for i in range (len(data)):
     x=[]
-    x.append(data.iloc[i]['新饮食得分(100制)'])
+    x.append(data.iloc[i]['新饮食得分'])
     x.append(data.iloc[i]['减重值'])
     X.append(x)
 
@@ -39,7 +39,7 @@ x = [n[0] for n in X]
 y = [n[1] for n in X]
 # 可视化操作
 plt.scatter(x, y, c=y_pred, marker='o')
-plt.title("Kmeans-Babymother Data")
+plt.title("LOF-Babymother Data")
 plt.xlabel("score")
 plt.ylabel("reduced weight")
 plt.legend(["user"])

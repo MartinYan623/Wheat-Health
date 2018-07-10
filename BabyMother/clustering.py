@@ -6,16 +6,17 @@ from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
 
-data=pd.read_csv('/Users/martin_yan/Desktop/444.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/90人 入营得分 5.22-6.25.csv')
 X=[]
 for i in range (len(data)):
     x=[]
+    x.append(data.iloc[i]['BMI'])
+    x.append(data.iloc[i]['年龄'])
     x.append(data.iloc[i]['新饮食得分(100制)'])
     x.append(data.iloc[i]['减重值'])
     #x.append(data.iloc[i]['总热量实际摄入平均量'])
     #x.append(data.iloc[i]['完整记录天数'])
-    #x.append(data.iloc[i]['BMI'])
-    #x.append(data.iloc[i]['年龄'])
+
     X.append(x)
 
 #公式为：(X-mean)/std  计算时对每个属性/每列分别进行
@@ -36,8 +37,8 @@ y = [n[1] for n in X]
 # 可视化操作
 plt.scatter(x, y, c=y_pred, marker='o')
 plt.title("Kmeans-Babymother Data")
-plt.xlabel("score")
-plt.ylabel("reduced weight")
+plt.xlabel("BMI")
+plt.ylabel("age")
 plt.legend(["user"])
 plt.show()
 data['聚类标签']=y_pred

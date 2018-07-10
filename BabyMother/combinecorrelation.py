@@ -177,15 +177,41 @@ plt.title('各指标随时间相关性变化')
 plt.xlabel('周数')
 plt.ylabel('MultipleR值')
 
+
+
+plt.plot(week,age,  label='年龄',marker='o')
+"""
+
+#用户基本属性和总分数
 plt.plot(week,newscore100, label='新饮食得分(100制)',marker='o')
 plt.plot(week,banlanced120,  label='饮食均衡得分(120分)',marker='o')
 plt.plot(week,HEI100,label='HEI平均得分(100分)',marker='o')
-plt.plot(week,bmi, label='BMI',marker='o')
-plt.plot(week,age,  label='年龄',marker='o')
+
 plt.plot(week,completeday,label='完整记录天数',marker='o')
 plt.plot(week,day,label='记录天数',marker='o')
 
 
+#第一组平均分数
+plt.plot(week,diefiber, label='膳食纤维摄入量平均分',marker='o')
+plt.plot(week,veg,  label='蔬菜摄入量平均分',marker='o')
+plt.plot(week,solidfat,label='固态脂肪摄入量平均分',marker='o')
+plt.plot(week,wholegrain, label='全谷类摄入量平均分',marker='o')
+plt.plot(week,refinegrain,  label='精制谷物摄入量平均分',marker='o')
+plt.plot(week,salt,label='钠盐摄入量平均分',marker='o')
+plt.plot(week,water,label='饮水量平均分',marker='o')
+plt.plot(week,alcohol, label='饮酒（酒精量，全天标准）平均分',marker='o')
+
+
+#第二组平均分数
+plt.plot(week,fishshrimp,  label='鱼虾贝壳类及植物蛋白类摄入量平均分',marker='o')
+plt.plot(week,nutrients,label='三大营养素组成平均分',marker='o')
+plt.plot(week,fruit, label='水果摄入量平均分',marker='o')
+plt.plot(week,milk,label='乳类摄入量平均分',marker='o')
+plt.plot(week,sugar,label='添加糖摄入量平均分',marker='o')
+plt.plot(week,totalheat,label='总热量摄入量平均分',marker='o')
+plt.plot(week,totalprotein,label='总蛋白摄入量平均分',marker='o')
+plt.plot(week,totalprotein,label='不饱和与饱和脂肪酸摄入比平均分',marker='o')
+"""
 
 plt.legend()
 # 设置数字标签

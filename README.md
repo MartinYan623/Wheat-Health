@@ -33,6 +33,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---outlierdetect.py
             |            |---newheatscore.py
             |            |---new.py
+            |            |---combinecorrelation.py
             |
             |
             ---data|---all data for this project
@@ -135,6 +136,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> newheatscore.py : 使用新区间换算用户的新热量得分。
 
 -----> new.py : 将预处理合并到一个类中，一次性输出总表。包括HEI分数(100分)、均衡饮食得分(120分)和新饮食得分(100制)。
+
+-----> combinecorrelation.py: 结合五周数据，做折线图。
+
 
 LOG:
 
@@ -362,3 +366,6 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 #plt.savefig('/Users/martin_yan/Desktop/test.png', dpi=300)
 
+7.9 整理宝妈营用户数据分析阶段性报告
+
+7.10 完善宝妈营用户数据分析阶段性报告
