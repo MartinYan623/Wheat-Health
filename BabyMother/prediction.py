@@ -31,6 +31,20 @@ rmse=[]
 pa=[]
 sum=0
 
+
+x_train, x_test, y_train, y_test = train_test_split(train[predictors],  target,random_state=81,test_size=.1)
+# 单个模型试验
+lr=RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1)
+#lr = XGBRegressor(max_depth=3, max_leaf_nodes=6)
+model = lr.fit(x_train, y_train)
+predictions=model.predict(x_test)
+print(predictions)
+print(y_test)
+print ('RMSE is: \n', mean_squared_error(y_test, predictions))
+
+
+
+
 """
 for i in range(1,100):
     x_train, x_test, y_train, y_test = train_test_split(train[predictors],  target,random_state= i,test_size=.1)
@@ -96,7 +110,7 @@ plt.xlabel('i')
 plt.ylabel('rmse')
 plt.plot(pa,rmse,'r', label='broadcast')
 plt.show()
-"""
+
 
 # 模型权重实验
 meanpa=0
@@ -136,4 +150,4 @@ plt.xlabel('i')
 plt.ylabel('rmse')
 plt.plot(pa,rmse,'r', label='broadcast')
 plt.show()
-
+"""
