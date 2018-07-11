@@ -455,4 +455,16 @@ dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-5.28.csv',
 
 """
 
+data=pd.read_csv('/Users/martin_yan/Desktop/111.csv')
+group=[]
+reduce=[]
+for i in range (len(data)):
+    if data.iloc[i]['年龄']>36:
+        group.append(1)
+        reduce.append(data.iloc[i]['减重值'])
+    else:
+        group.append(2)
+        reduce.append(data.iloc[i]['减重值'])
+dataframe=pd.DataFrame({'组别':group,'减重值':reduce})
+dataframe.to_csv('/Users/martin_yan/Desktop/dsds.csv',index=False, encoding="utf_8_sig")
 
