@@ -1,8 +1,8 @@
 import pandas as pd
 import datetime
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/babymotherlight7days_data.csv')
-info=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户减重表7days.csv',usecols=[1,3])
+data=pd.read_csv('/Users/martin_yan/Desktop/babymotherlight_data.csv')
+info=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户减重表.csv',usecols=[1,3])
 original=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户初始信息表.csv',usecols=['姓名','初始体重','BMI'])
 birthday=pd.read_csv('../data/宝妈营轻享/宝妈轻享营用户生日.csv',usecols=['uid','年龄'])
 birthday.rename(columns={'uid':'用户编号'}, inplace = True)
@@ -46,7 +46,7 @@ sum_f_alcohol = 0
 sum_water = 0
 sum_f_water = 0
 score=0
-
+newscore=0
 count=0
 num=0
 print(data)
@@ -105,9 +105,11 @@ for i in range(len(data)):
 
     score = score+data.iloc[i][38]
 
+    newscore=newscore+((data.iloc[i][38]-data.iloc[i][29])/120*0.9+data.iloc[i][29]/10*0.1)*100
+
     if username[i]==False:
         num=num+1
-        """
+
         #除以实际记录天数
         dataframe = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][1]], '记录天数': [count],
                                    '水果实际摄入平均量': [sum_f_fruit / count], '水果摄入量平均分': [sum_fruit / count],
@@ -137,7 +139,7 @@ for i in range(len(data)):
                                    '饮酒实际摄入平均量': [sum_f_alcohol / count],
                                    '饮酒（酒精量，全天标准）平均分': [sum_alcohol / count],
                                    '饮水平均量': [sum_f_water / count], '饮水量平均分': [sum_water / count],
-                                   '平均得分': [score / count],'减重值':[data.iloc[i][39]],'初始体重值':[data.iloc[i][40]],
+                                   '平均得分(130分制)': [score / count],'日报得分':[newscore/count],'减重值':[data.iloc[i][39]],'初始体重值':[data.iloc[i][40]],
                                    '减重百分比':[data.iloc[i][39]/data.iloc[i][40]],'BMI':[data.iloc[i][41]],'年龄':[data.iloc[i][42]]})
         """
         #除以入营以来的天数
@@ -169,10 +171,10 @@ for i in range(len(data)):
                                    '饮酒实际摄入平均量': [sum_f_alcohol / 7],
                                    '饮酒（酒精量，全天标准）平均分': [sum_alcohol / 7],
                                    '饮水平均量': [sum_f_water / 7], '饮水量平均分': [sum_water / 7],
-                                   '平均得分': [score / 7], '减重值': [data.iloc[i][39]], '初始体重值': [data.iloc[i][40]],
+                                   '平均得分(130分制)': [score / 7], '日报得分':[newscore/7],'减重值': [data.iloc[i][39]], '初始体重值': [data.iloc[i][40]],
                                    '减重百分比': [data.iloc[i][39] / data.iloc[i][40]], 'BMI': [data.iloc[i][41]],
                                    '年龄': [data.iloc[i][42]]})
-
+          """
         sec=True
         if num>1:
             sec=False
@@ -182,7 +184,7 @@ for i in range(len(data)):
                     '不饱和与饱和脂肪酸摄入平均对比值', '不饱和与饱和脂肪酸摄入比平均分', '固态脂肪实际摄入平均量', '固态脂肪摄入量平均分', '钠盐实际摄入平均量',
                    '钠盐摄入量平均分','添加糖实际摄入平均量', '添加糖摄入量平均分', '总热量摄入量平均分',   '三大营养素碳水化合物平均对比值','三大营养素脂肪平均对比值',
                     '三大营养素蛋白质平均对比值', '三大营养素组成平均分', '饮酒实际摄入平均量',
-                    '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','初始体重值','减重值','减重百分比']
+                    '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分(130分制)','日报得分','初始体重值','减重值','减重百分比']
 
         dataframe.to_csv('/Users/martin_yan/Desktop/21.csv', index=False, encoding="utf_8_sig",
                           columns=columns,mode='a',header=sec)
@@ -221,10 +223,11 @@ for i in range(len(data)):
         sum_water = 0
         sum_f_water = 0
         score = 0
+        newscore=0
         count = 0
 
 
-data=pd.read_csv('../data/宝妈营轻享/宝妈轻享每日热量统计7days.csv',usecols=[1,4,5,6])
+data=pd.read_csv('../data/宝妈营轻享/宝妈轻享每日热量统计.csv',usecols=[1,4,5,6])
 light=pd.read_csv('../data/宝妈营轻享/宝妈轻享轻食日统计.csv')
 data = pd.merge(data, light, on='姓名')
 print(len(data['姓名'].unique()))
@@ -314,7 +317,7 @@ data.to_csv('/Users/martin_yan/Desktop/31.csv', index=False, encoding="utf_8_sig
 
 
 #找出用户完整记录的天数
-data=pd.read_csv('../data/宝妈营轻享/宝妈轻享记录餐数7days.csv',usecols=[0,1,2,3])
+data=pd.read_csv('../data/宝妈营轻享/宝妈轻享记录餐数.csv',usecols=[0,1,2,3])
 completedata=pd.read_csv('/Users/martin_yan/Desktop/31.csv')
 data = data.drop_duplicates(['uid','记录日期'])
 data=data.reset_index(drop=True)
@@ -338,6 +341,6 @@ columns= ['用户编号', '姓名', '年龄','BMI','记录天数','完整记录�
                     '不饱和与饱和脂肪酸摄入平均对比值', '不饱和与饱和脂肪酸摄入比平均分', '固态脂肪实际摄入平均量', '固态脂肪摄入量平均分', '钠盐实际摄入平均量', '钠盐摄入量平均分',
                     '添加糖实际摄入平均量', '添加糖摄入量平均分', '轻食日热量平均摄入值','普通日热量平均摄入值','轻食日热量平均对比值','普通日热量平均对比值','总热量摄入量平均分', '三大营养素碳水化合物平均对比值',
                     '三大营养素脂肪平均对比值','三大营养素蛋白质平均对比值', '三大营养素组成平均分', '饮酒实际摄入平均量',
-                    '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分','初始体重值','减重值','减重百分比']
+                    '饮酒（酒精量，全天标准）平均分', '饮水平均量', '饮水量平均分','平均得分(130分制)','日报得分','初始体重值','减重值','减重百分比']
 data.to_csv('/Users/martin_yan/Desktop/444.csv',index=False, encoding="utf_8_sig",columns=columns)
 
