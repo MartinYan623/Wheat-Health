@@ -53,16 +53,8 @@ columns = ['用户编号', '姓名', '轻食日1','轻食日2']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈轻享轻食日统计.csv', index=False, encoding="utf_8_sig", columns=columns)
 
 
-#获取用户每日热量统计
-data=pd.read_csv('../data/宝妈营轻享/宝妈营轻享数据.csv')
-data2=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户初始信息表.csv',usecols=[0])
-data.rename(columns={'uid':'用户编号'}, inplace = True)
-data = pd.merge(data, data2, on='用户编号')
 
-data=data[data['rf'].isin(['总热量摄入量'])]
-print(data)
-data.to_csv('/Users/martin_yan/Desktop/dsdsdd.csv', index=False, encoding="utf_8_sig")
-"""
+
 
 
 # 获得用户减重表
@@ -101,3 +93,14 @@ for i in range(len(data)):
 dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'BMI':bmi,'减重值':reduce,'最后记录体重日期':time})
 columns = ['用户编号','姓名','BMI','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈轻享用户减重表.csv',index=False, encoding="utf_8_sig",columns=columns)
+"""
+
+#获取用户每日热量统计
+data=pd.read_csv('../data/宝妈营轻享/宝妈营轻享数据.csv')
+data2=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户初始信息表.csv',usecols=[0])
+data.rename(columns={'uid':'用户编号'}, inplace = True)
+data = pd.merge(data, data2, on='用户编号')
+
+data=data[data['rf'].isin(['总热量摄入量'])]
+print(data)
+data.to_csv('/Users/martin_yan/Desktop/dsdsdd.csv', index=False, encoding="utf_8_sig")

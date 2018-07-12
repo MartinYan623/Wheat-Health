@@ -360,7 +360,7 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 #for a, b in zip(week, newscore100):
 
-#    plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
+#plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
 
 将绘制后的图片保存。
 
@@ -379,3 +379,5 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 7.12 宝妈轻享营用户数据整理，输出用户总表。两种：用户实际记录天数／用户入营7天。
 
 用户的分数有130分制和使用了均衡饮食／热量权重9：1分数。
+
+轻享数据各指标和减重值、减重百分比的相关性。

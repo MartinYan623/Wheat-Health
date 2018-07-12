@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/babymotherlight_data.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/123.csv')
 info=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户减重表.csv',usecols=[1,3])
 original=pd.read_csv('../data/宝妈营轻享/宝妈轻享用户初始信息表.csv',usecols=['姓名','初始体重','BMI'])
 birthday=pd.read_csv('../data/宝妈营轻享/宝妈轻享营用户生日.csv',usecols=['uid','年龄'])
@@ -174,7 +174,7 @@ for i in range(len(data)):
                                    '平均得分(130分制)': [score / 7], '日报得分':[newscore/7],'减重值': [data.iloc[i][39]], '初始体重值': [data.iloc[i][40]],
                                    '减重百分比': [data.iloc[i][39] / data.iloc[i][40]], 'BMI': [data.iloc[i][41]],
                                    '年龄': [data.iloc[i][42]]})
-          """
+        """
         sec=True
         if num>1:
             sec=False
@@ -227,7 +227,7 @@ for i in range(len(data)):
         count = 0
 
 
-data=pd.read_csv('../data/宝妈营轻享/宝妈轻享每日热量统计.csv',usecols=[1,4,5,6])
+data=pd.read_csv('/Users/martin_yan/Desktop/222.csv',usecols=[1,4,5,6])
 light=pd.read_csv('../data/宝妈营轻享/宝妈轻享轻食日统计.csv')
 data = pd.merge(data, light, on='姓名')
 print(len(data['姓名'].unique()))
@@ -280,6 +280,8 @@ for i in range(len(data)):
 
     if last[i] == False:
         name.append(data.iloc[i]['姓名'])
+
+
         #除以记录天数
         if countlight==0:
             meanlight.append(0)
@@ -296,10 +298,10 @@ for i in range(len(data)):
 
         """
         #除以实际入营天数
-        meanflight.append(sum_f_light / 10)
-        meanlight.append(sum_light / 10)
-        meanfnormal.append(sum_f_normal / 25)
-        meannormal.append(sum_normal / 25)
+        meanflight.append(sum_f_light / 2)
+        meanlight.append(sum_light / 2)
+        meanfnormal.append(sum_f_normal / 5)
+        meannormal.append(sum_normal / 5)
         """
 
 
