@@ -12,8 +12,8 @@ for i in range (len(data)):
     x=[]
     x.append(data.iloc[i]['BMI'])
     x.append(data.iloc[i]['年龄'])
-    x.append(data.iloc[i]['新饮食得分(100制)'])
-    x.append(data.iloc[i]['减重值'])
+    #x.append(data.iloc[i]['新饮食得分(100制)'])
+    #x.append(data.iloc[i]['减重值'])
     #x.append(data.iloc[i]['总热量实际摄入平均量'])
     #x.append(data.iloc[i]['完整记录天数'])
 
@@ -42,4 +42,4 @@ plt.ylabel("age")
 plt.legend(["user"])
 plt.show()
 data['聚类标签']=y_pred
-#data.to_excel('/Users/martin_yan/Desktop/clustering5.22-6.11(3).xlsx',index=False, encoding="utf_8_sig")
+#data.to_excel('/Users/martin_yan/Desktop/clustering5.22-6.11.xlsx',index=False, encoding="utf_8_sig")
