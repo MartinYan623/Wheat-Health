@@ -1,7 +1,9 @@
 import pandas as pd
 import openpyxl
+import matplotlib.pyplot as plt
 encoding='UTF-8'
 
+"""
 data=pd.read_csv('../data/宝妈用户每日体重变化5.22-6.25.csv')
 data2=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','BMI'])
 data = pd.merge(data, data2, on='姓名')
@@ -43,3 +45,74 @@ dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'实际记录天数':day
 columns=['用户编号','姓名','实际记录天数','减重值','BMI']
 print(dataframe)
 dataframe.to_csv('/Users/martin_yan/Desktop/累积第五周减重值情况.csv', index=False, encoding="utf_8_sig",columns=columns)
+"""
+weight=0
+meanweight=[]
+best=0
+parameter=0
+bmi=0
+meanbmi=[]
+count=[]
+oneweight=[]
+onebmi=[]
+data=pd.read_csv('/Users/martin_yan/Desktop/bmi减重百分比去异常点数据.csv')
+data=data.sort_values(['减重值'])
+print(data)
+for i in range (len(data)):
+    weight=weight+data.iloc[i]['减重值']
+    bmi=bmi+data.iloc[i]['BMI']
+    oneweight.append(data.iloc[i]['减重值'])
+    onebmi.append(data.iloc[i]['BMI'])
+    meanweight.append(weight/(i+1))
+    meanbmi.append(round(bmi/(i+1), 2))
+
+    count.append(i+1)
+
+dataframe=pd.DataFrame({'平均减重值':meanweight,'平均BMI':meanbmi,'人数':count})
+print(dataframe)
+plt.rcParams['font.sans-serif']=[u'SimHei']
+plt.rcParams['axes.unicode_minus']=False
+plt.title('BMI随减重值的变化图')
+plt.xlabel('减重值(KG)')
+plt.ylabel('BMI')
+
+
+# 平均BMI随减重值的变化图
+plt.plot(meanweight, meanbmi, 'r', label='broadcast')
+count=0
+for a, b in zip(meanweight, meanbmi):
+    if count%3==0:
+        plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
+    count=count+1
+plt.show()
+
+"""
+# 非平均BMI随减重值的变化图
+plt.plot(oneweight, onebmi, 'r', label='broadcast')
+count=0
+for a, b in zip(oneweight, onebmi):
+    if count%10==0:
+        plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
+    count=count+1
+plt.show()
+
+
+data=pd.read_csv('/Users/martin_yan/Desktop/bmi减重百分比去异常点数据.csv')
+meanweight=[]
+bmi=[]
+number=[]
+for a in range(210,240,4):
+    a=a*0.1
+    weight=0
+    count=0
+    for i in range(len(data)):
+        if data.iloc[i]['BMI']>a:
+            count=count+1
+            weight=weight+data.iloc[i]['减重值']
+    bmi.append(a)
+    meanweight.append(weight/count)
+    number.append(count)
+
+dataframe=pd.DataFrame({'平均减重值':meanweight,'平均BMI':bmi,'计算人数':number})
+print(dataframe)
+"""
