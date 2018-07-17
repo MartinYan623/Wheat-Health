@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 encoding='UTF-8'
 plt.rcParams['font.sans-serif']=[u'SimHei']
 plt.rcParams['axes.unicode_minus']=False
-data = pd.read_csv('/Users/martin_yan/Desktop/c3.csv')
+data = pd.read_csv('/Users/martin_yan/Desktop/90人 入营得分 5.22-6.25.csv')
 #data=data[data['记录天数']>3]
 data.drop(['用户编号'], inplace=True, axis=1)
 print(data)

@@ -1,12 +1,12 @@
 import pandas as pd
 import datetime
 encoding='UTF-8'
-data=pd.read_csv('/Users/martin_yan/Desktop/整理数据 5.22-5.28.csv')
+data=pd.read_csv('/Users/martin_yan/Desktop/整理数据5.22-6.251.csv')
 #HEI删除了四项指标
 #data.drop(['膳食纤维摄入实际量','膳食纤维摄入量得分','总热量摄入实际量','总热量摄入量得分','三大营养素摄入实际量','三大营养素组成得分','饮水量','饮水量得分'], inplace=True, axis=1)
-info=pd.read_csv('../data/宝妈用户减重表5.22-5.28.csv',usecols=[1,2])
-original=pd.read_csv('../data/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
-birthday=pd.read_csv('../data/宝妈营用户生日.csv',usecols=['uid','年龄'])
+info=pd.read_csv('../data/宝妈营数据/宝妈用户减重表5.22-6.25.csv',usecols=[1,2])
+original=pd.read_csv('../data/宝妈营数据/宝妈用户初始信息表.csv',usecols=['姓名','初始体重值','BMI'])
+birthday=pd.read_csv('../data/宝妈营数据/宝妈营用户生日.csv',usecols=['uid','年龄'])
 birthday.rename(columns={'uid':'用户编号'}, inplace = True)
 data = pd.merge(data, info, on='姓名')
 data = pd.merge(data, original, on='姓名')
@@ -158,35 +158,35 @@ for i in range(len(data)):
         """
         #除以入营以来的天数
         dataframe2 = pd.DataFrame({'用户编号': [data.iloc[i][0]], '姓名': [data.iloc[i][2]], '记录天数': [count],
-                                   '水果实际摄入平均量': [sum_f_fruit / 7], '水果摄入量平均分': [sum_fruit / 7],
-                                   '蔬菜实际摄入平均量': [sum_f_veg / 7], '蔬菜摄入量平均分': [sum_veg / 7],
-                                   '全谷类实际摄入平均量': [sum_f_wholegrain / 7],
-                                   '全谷类摄入量平均分': [sum_wholegrain / 7],
-                                   '精制谷物摄入平均量': [sum_f_refinegrain / 7],
-                                   '精制谷物摄入量平均分': [sum_refinegrain / 7],
-                                   '膳食纤维实际摄入平均量': [sum_f_diefiber / 7],
-                                   '膳食纤维摄入量平均分': [sum_diefiber / 7],
-                                   '乳类实际摄入平均量': [sum_f_milk / 7], '乳类摄入量平均分': [sum_milk / 7],
-                                   '总蛋白实际摄入平均量': [sum_f_totalprotein / 7],
-                                   '总蛋白摄入量平均分': [sum_totalprotein / 7],
-                                   '鱼虾贝壳类及植物蛋白类实际摄入平均量': [sum_f_fishshrimp / 7],
-                                   '鱼虾贝壳类及植物蛋白类摄入量平均分': [sum_fishshrimp / 7],
-                                   '不饱和与饱和脂肪酸摄入平均对比值': [sum_f_fattyacids / 7],
-                                   '不饱和与饱和脂肪酸摄入比平均分': [sum_fattyacids / 7],
-                                   '固态脂肪实际摄入平均量': [sum_f_solidfat /7],
-                                   '固态脂肪摄入量平均分': [sum_solidfat /7],
-                                   '钠盐实际摄入平均量': [sum_f_salt /7], '钠盐摄入量平均分': [sum_salt / 7],
-                                   '添加糖实际摄入平均量': [sum_f_sugar /7], '添加糖摄入量平均分': [sum_sugar /7],
-                                   '总热量摄入量平均分': [sum_totalheat / 7],
-                                   '三大营养素碳水化合物平均对比值': [sum_f_nutrients1 / 7],
-                                   '三大营养素脂肪平均对比值': [sum_f_nutrients2 / 7],
-                                   '三大营养素蛋白质平均对比值': [sum_f_nutrients3 / 7],
-                                   '三大营养素组成平均分': [sum_nutrients /7],
-                                   '饮酒实际摄入平均量': [sum_f_alcohol /7], '饮酒（酒精量，全天标准）平均分': [sum_alcohol /7],
-                                   '饮水平均量': [sum_f_water / 7], '饮水量平均分': [sum_water /7],
-                                   'HEI平均得分(100分)': [heiscore / 7],
-                                   '饮食均衡得分(120分)': [balancescore / 7],
-                                   '新饮食得分(100制)': [totalscore /7],
+                                   '水果实际摄入平均量': [sum_f_fruit / 35], '水果摄入量平均分': [sum_fruit / 35],
+                                   '蔬菜实际摄入平均量': [sum_f_veg / 35], '蔬菜摄入量平均分': [sum_veg / 35],
+                                   '全谷类实际摄入平均量': [sum_f_wholegrain / 35],
+                                   '全谷类摄入量平均分': [sum_wholegrain / 35],
+                                   '精制谷物摄入平均量': [sum_f_refinegrain / 35],
+                                   '精制谷物摄入量平均分': [sum_refinegrain / 35],
+                                   '膳食纤维实际摄入平均量': [sum_f_diefiber / 35],
+                                   '膳食纤维摄入量平均分': [sum_diefiber / 35],
+                                   '乳类实际摄入平均量': [sum_f_milk / 35], '乳类摄入量平均分': [sum_milk / 35],
+                                   '总蛋白实际摄入平均量': [sum_f_totalprotein / 35],
+                                   '总蛋白摄入量平均分': [sum_totalprotein / 35],
+                                   '鱼虾贝壳类及植物蛋白类实际摄入平均量': [sum_f_fishshrimp / 35],
+                                   '鱼虾贝壳类及植物蛋白类摄入量平均分': [sum_fishshrimp / 35],
+                                   '不饱和与饱和脂肪酸摄入平均对比值': [sum_f_fattyacids / 35],
+                                   '不饱和与饱和脂肪酸摄入比平均分': [sum_fattyacids / 35],
+                                   '固态脂肪实际摄入平均量': [sum_f_solidfat /35],
+                                   '固态脂肪摄入量平均分': [sum_solidfat /35],
+                                   '钠盐实际摄入平均量': [sum_f_salt /35], '钠盐摄入量平均分': [sum_salt / 35],
+                                   '添加糖实际摄入平均量': [sum_f_sugar /35], '添加糖摄入量平均分': [sum_sugar /35],
+                                   '总热量摄入量平均分': [sum_totalheat / 35],
+                                   '三大营养素碳水化合物平均对比值': [sum_f_nutrients1 / 35],
+                                   '三大营养素脂肪平均对比值': [sum_f_nutrients2 / 35],
+                                   '三大营养素蛋白质平均对比值': [sum_f_nutrients3 / 35],
+                                   '三大营养素组成平均分': [sum_nutrients /35],
+                                   '饮酒实际摄入平均量': [sum_f_alcohol /35], '饮酒（酒精量，全天标准）平均分': [sum_alcohol /35],
+                                   '饮水平均量': [sum_f_water / 35], '饮水量平均分': [sum_water /35],
+                                   'HEI平均得分(100分)': [heiscore / 35],
+                                   '饮食均衡得分(120分)': [balancescore / 35],
+                                   '新饮食得分(100制)': [totalscore /35],
                                    '减重值': [data.iloc[i][40]], '初始体重值': [data.iloc[i][41]],
                                    '减重百分比': [data.iloc[i][40] / data.iloc[i][41]], 'BMI': [data.iloc[i][42]],
                                    '年龄': [data.iloc[i][43]]})
@@ -246,11 +246,11 @@ for i in range(len(data)):
         count = 0
 
 
-data=pd.read_csv('/Users/martin_yan/Desktop/每日热量统计.csv',usecols=[1,4,5,6])
-data=data[data['记录日期']<'2018/5/29 0:00']
+data=pd.read_csv('../data/宝妈营数据/每日热量统计.csv',usecols=[1,4,5,6])
+#data=data[data['记录日期']<'2018/5/29 0:00']
 #data=data[(True-data['记录日期'].isin(['2018/6/10 0:00','2018/6/11 0:00','2018/6/12 0:00','2018/6/13 0:00','2018/6/14 0:00','2018/6/15 0:00','2018/6/16 0:00','2018/6/17 0:00','2018/6/18 0:00',
 #                                   '2018/6/19 0:00','2018/6/20 0:00','2018/6/21 0:00','2018/6/22 0:00','2018/6/23 0:00','2018/6/24 0:00','2018/6/25 0:00']))]
-light=pd.read_csv('../data/轻食日统计.csv')
+light=pd.read_csv('../data/宝妈营数据/轻食日统计.csv')
 data = pd.merge(data, light, on='姓名')
 print(len(data['姓名'].unique()))
 lightday=[]
@@ -320,10 +320,10 @@ for i in range(len(data)):
 
         """
         #除以实际入营天数
-        meanflight.append(sum_f_light / 2)
-        meanlight.append(sum_light / 2)
-        meanfnormal.append(sum_f_normal / 5)
-        meannormal.append(sum_normal / 5)
+        meanflight.append(sum_f_light / 10)
+        meanlight.append(sum_light / 10)
+        meanfnormal.append(sum_f_normal / 25)
+        meannormal.append(sum_normal / 25)
 
 
 
@@ -337,17 +337,17 @@ for i in range(len(data)):
 meanheat=pd.DataFrame({'姓名':name,'轻食日热量平均摄入值':meanflight,'普通日热量平均摄入值':meanfnormal,'轻食日热量平均对比值':meanlight,'普通日热量平均对比值':meannormal})
 mean=pd.read_csv('/Users/martin_yan/Desktop/2.csv')
 data = pd.merge(mean, meanheat, on='姓名')
-good=pd.read_csv('../data/90人无离群点名单.csv',usecols=['姓名'])
-data = pd.merge(data,good, on='姓名')
+#good=pd.read_csv('../data/宝妈营数据/90人无离群点名单.csv',usecols=['姓名'])
+#data = pd.merge(data,good, on='姓名')
 data.to_csv('/Users/martin_yan/Desktop/333.csv', index=False, encoding="utf_8_sig")
 
 
 
 #找出用户完整记录的天数
-data=pd.read_csv('/Users/martin_yan/Desktop/记录餐数.csv',usecols=[0,2,3,4])
+data=pd.read_csv('../data/宝妈营数据/记录餐数.csv',usecols=[0,2,3,4])
 completedata=pd.read_csv('/Users/martin_yan/Desktop/333.csv')
-helper=pd.read_csv('../data/宝妈营助理.csv',usecols=[2,3])
-data=data[data['记录日期']<'2018/5/29 0:00']
+helper=pd.read_csv('../data/宝妈营数据/宝妈营助理.csv',usecols=[2,3])
+#data=data[data['记录日期']<'2018/5/29 0:00']
 #data=data[(True-data['记录日期'].isin(['2018/6/10 0:00','2018/6/11 0:00','2018/6/12 0:00','2018/6/13 0:00','2018/6/14 0:00','2018/6/15 0:00','2018/6/16 0:00','2018/6/17 0:00','2018/6/18 0:00',
 #                                   '2018/6/19 0:00','2018/6/20 0:00','2018/6/21 0:00','2018/6/22 0:00','2018/6/23 0:00','2018/6/24 0:00','2018/6/25 0:00']))]
 #删除用户重复记录的行
