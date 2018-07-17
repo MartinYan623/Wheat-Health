@@ -1,16 +1,17 @@
 import pandas as pd
 import numpy as np
-from sklearn import linear_model
+import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectFromModel
 from sklearn.kernel_ridge import KernelRidge
+from sklearn import linear_model
 from xgboost import XGBRegressor
 from sklearn import svm
 from sklearn.ensemble import RandomForestRegressor
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression as LR
-import pgmpy
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 
 train=pd.read_csv('/Users/martin_yan/Desktop/90人 入营得分 5.22-6.25.csv')
 plt.rcParams['font.sans-serif']=[u'SimHei']
@@ -32,20 +33,48 @@ pa=[]
 sum=0
 
 
-x_train, x_test, y_train, y_test = train_test_split(train[predictors],  target,random_state=81,test_size=.1)
+x_train, x_test, y_train, y_test = train_test_split(train[predictors], target,random_state=10,test_size=.1)
 # 单个模型试验
+#随机森林
 lr=RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1)
-#lr = XGBRegressor(max_depth=3, max_leaf_nodes=6)
+#支持向量回归
+lr=svm.SVR(C=1.0, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma='auto',kernel='rbf', max_iter=-1, shrinking=True, tol=0.001, verbose=False)
+#简单线性回归
+lr=linear_model.LinearRegression()
+#XGBoost回归
+lr=XGBRegressor(max_depth=5)
+#岭回归
+lr = linear_model.Ridge(alpha=0.01)
+#Lasso回归
+lr = linear_model.Lasso(alpha=0.01)
+#弹性网络(是Lesso回归和岭回归技术的混合体)
+lr = linear_model.ElasticNet(l1_ratio=0.2)
+
 model = lr.fit(x_train, y_train)
 predictions=model.predict(x_test)
 print(predictions)
 print(y_test)
 print ('RMSE is: \n', mean_squared_error(y_test, predictions))
 
-
+"""
+# 多项式回归 数据量太少 过拟合
+poly = PolynomialFeatures(degree=2)
+x_train_poly = poly.fit_transform(x_train)
+poly_reg = LinearRegression()
+poly_reg.fit(x_train_poly, y_train)
+x_test_poly = poly.fit_transform(x_test)
+y_test_pred = poly_reg.predict(x_test_poly)
+poly_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+print(y_test_pred)
+print(y_test)
+print(poly_rmse)
+"""
 
 
 """
+print(predictions)
+print(y_test)
+print ('RMSE is: \n', mean_squared_error(y_test, predictions))
 for i in range(1,100):
     x_train, x_test, y_train, y_test = train_test_split(train[predictors],  target,random_state= i,test_size=.1)
     #forest = RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1)
@@ -72,16 +101,7 @@ plt.show()
 
 
 """
-# 单个模型试验
-lr=RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1),
-lr=svm.SVR(C=1.0, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma='auto',kernel='rbf', max_iter=-1, shrinking=True, tol=0.001, verbose=False)
-lr=linear_model.LinearRegression()
-lr=XGBRegressor(max_depth=5)
-model = lr.fit(x_train, y_train)
-predictions=model.predict(x_test)
-print(predictions)
-print(y_test)
-print ('RMSE is: \n', mean_squared_error(y_test, predictions))
+
 
 
 # 结合运用多模型

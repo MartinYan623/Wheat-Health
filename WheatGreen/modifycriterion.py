@@ -36,6 +36,7 @@ print(data)
 data.to_csv('/Users/martin_yan/Desktop/new_宝妈营数据6.19-6.25.csv', index=False, encoding="utf_8_sig")
 """
 
+#升降某些指标的分值
 data = pd.read_csv('/Users/martin_yan/Desktop/90人 入营得分 5.22-6.25.csv')
 newdiefiber =[]
 newveg=[]
