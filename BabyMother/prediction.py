@@ -33,6 +33,7 @@ pa=[]
 sum=0
 
 
+"""
 x_train, x_test, y_train, y_test = train_test_split(train[predictors], target,random_state=10,test_size=.1)
 # 单个模型试验
 #随机森林
@@ -56,7 +57,6 @@ print(predictions)
 print(y_test)
 print ('RMSE is: \n', mean_squared_error(y_test, predictions))
 
-"""
 # 多项式回归 数据量太少 过拟合
 poly = PolynomialFeatures(degree=2)
 x_train_poly = poly.fit_transform(x_train)
@@ -103,20 +103,20 @@ plt.show()
 """
 
 
-
 # 结合运用多模型
-for i in range(1,100):
-    x_train, x_test, y_train, y_test = train_test_split(train[predictors],  target,random_state= i,test_size=.1)
+for i in range(0,100):
+    x_train, x_test, y_train, y_test = train_test_split(train[predictors],target,random_state= i,test_size=.1)
     algorithms=[
     RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1),
-    XGBRegressor(max_depth=3,max_leaf_nodes=6)
+    XGBRegressor(max_depth=3,max_leaf_nodes=6),
+    linear_model.ElasticNet(l1_ratio=0.5)
     ]
     full_predictions = []
     for lr in algorithms:
         model = lr.fit(x_train, y_train)
         predictions=model.predict(x_test)
         full_predictions.append(predictions)
-    predictions = (full_predictions[0]+full_predictions[1])/2
+    predictions = (full_predictions[0]+full_predictions[1]+full_predictions[2])/3
     print('第' + str(i) + '次尝试')
     print ('RMSE is: \n', mean_squared_error(y_test, predictions))
     rmse.append(mean_squared_error(y_test, predictions))
@@ -131,13 +131,12 @@ plt.ylabel('rmse')
 plt.plot(pa,rmse,'r', label='broadcast')
 plt.show()
 
-
 # 模型权重实验
 meanpa=0
 for i in range(1,50):
     best=100
     parameter=0
-    x_train, x_test, y_train, y_test = train_test_split(train[predictors],  target,random_state= i,test_size=.1)
+    x_train, x_test, y_train, y_test = train_test_split(train[predictors],target,random_state= i,test_size=.1)
     algorithms=[
     RandomForestRegressor(n_estimators =300,criterion='mse',min_samples_leaf=6,max_depth=3,random_state=1,n_jobs=-1),
     XGBRegressor(max_depth=3,max_leaf_nodes=6)
@@ -170,4 +169,6 @@ plt.xlabel('i')
 plt.ylabel('rmse')
 plt.plot(pa,rmse,'r', label='broadcast')
 plt.show()
+
+
 """
