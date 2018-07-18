@@ -34,7 +34,7 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---newheatscore.py
             |            |---new.py
             |            |---combinecorrelation.py
-            |
+            |            |---arma.py
             |
             ---data|---all data for this project
 
@@ -137,8 +137,9 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 
 -----> new.py : 将预处理合并到一个类中，一次性输出总表。包括HEI分数(100分)、均衡饮食得分(120分)和新饮食得分(100制)。
 
------> combinecorrelation.py: 结合五周数据，做折线图。
+-----> combinecorrelation.py : 结合五周数据，做折线图。
 
+-----> arma.py : 时序分析模型，预测用户的减重变化情况。
 
 LOG:
 
@@ -397,3 +398,5 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 增加三种预测回归模型：岭回归、Lasso回归和弹性网络。
 
 7.18 重新进行预测模型的性能分析，包括：单模型性能分析、Ensemble实验及权重探究实验。
+
+使用ARMA时序模型，分析和预测用户的减重情况。

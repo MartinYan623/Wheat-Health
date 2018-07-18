@@ -453,7 +453,6 @@ dataframe=pd.DataFrame({'用户编号':id,'姓名':name,'减重值':reduce,'最�
 columns = ['用户编号','姓名','减重值','最后记录体重日期']
 dataframe.to_csv('/Users/martin_yan/Desktop/宝妈用户减重表5.22-5.28.csv',index=False, encoding="utf_8_sig",columns=columns)
 
-"""
 
 data=pd.read_csv('/Users/martin_yan/Desktop/111.csv')
 group=[]
@@ -467,4 +466,7 @@ for i in range (len(data)):
         reduce.append(data.iloc[i]['减重值'])
 dataframe=pd.DataFrame({'组别':group,'减重值':reduce})
 dataframe.to_csv('/Users/martin_yan/Desktop/dsds.csv',index=False, encoding="utf_8_sig")
+"""
+
+
 
