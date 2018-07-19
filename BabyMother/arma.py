@@ -55,13 +55,20 @@ print(stats.normaltest(resid))
 fig = plt.figure(figsize=(12,8))
 ax = fig.add_subplot(111)
 fig = qqplot(resid, line='q', ax=ax, fit=True)
-
+plt.hist(resid,bins=10,normed=True,color='steelblue',edgecolor='k')
 # 德宾-沃森（Durbin-Watson）检验。德宾-沃森检验,简称D-W检验
 # 是目前检验自相关性最常用的方法，但它只使用于检验一阶自相关性
 # 当DW值显著的接近于O时，则存在正自相关性
 # 而接近于２时，则不存在（一阶）自相关性
 # 当DW值显著的接近于4时，则存在负自相关性
 print(sm.stats.durbin_watson(arma_mod80.resid.values))
+
+
+r,q,p = sm.tsa.acf(resid.values.squeeze(), qstat=True)
+data = np.c_[range(1,35), r[1:], q, p]
+table = pd.DataFrame(data, columns=['lag', "AC", "Q", "Prob(>Q)"])
+print(table.set_index('lag'))
+
 
 predict_dta = arma_mod80.predict('2035', '2045', dynamic=True)
 print(predict_dta)
