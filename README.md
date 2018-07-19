@@ -400,3 +400,5 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 7.18 重新进行预测模型的性能分析，包括：单模型性能分析、Ensemble实验及权重探究实验。
 
 使用ARMA时序模型，分析和预测用户的减重情况。
+
+7.19 整理更新宝妈营报告。
