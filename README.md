@@ -401,4 +401,4 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 
 使用ARMA时序模型，分析和预测用户的减重情况。
 
-7.19 整理更新宝妈营报告。
+7.19 增加模型检验方法，整理更新宝妈营报告。
