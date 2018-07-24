@@ -4,7 +4,7 @@
 
 本代码需要运行在python3.6环境下，运行前需要安装以下常用的python第三方库 pandas,numpy,matplotlib,seaborn,scipy和sklearn。
 
-代码结果如下:
+代码结构如下:
 
 Wheat-Health---WheatGreen|---correlation.py
             |            |---modifycriterion.py
@@ -35,6 +35,15 @@ Wheat-Health---WheatGreen|---correlation.py
             |            |---new.py
             |            |---combinecorrelation.py
             |            |---arma.py
+            |            |---prediction2.py
+            |
+            |
+            ---BabyMotherLight|---babymother.py
+            |                 |---babymother_mean.py
+            |                 |---test.py
+            |
+            |
+            |
             |
             ---data|---all data for this project
 
@@ -140,6 +149,10 @@ https://blog.csdn.net/sinat_33027857/article/details/78072292
 -----> combinecorrelation.py : 结合五周数据，做折线图。
 
 -----> arma.py : 时序分析模型，预测用户的减重变化情况。
+
+-----> prediction2.py : 根据BMI值会动态变化用户计算数据。<24/24-28/>28三组。每周数据为一个模型，
+
+单周预测，可以动态修改变化趋势。
 
 LOG:
 
@@ -402,3 +415,9 @@ Lof参考资料: https://blog.csdn.net/wangyibo0201/article/details/51705966
 使用ARMA时序模型，分析和预测用户的减重情况。
 
 7.19 增加模型检验方法，整理更新宝妈营报告。
+
+7.23 归档宝妈营报告。整理新模型需要的数据。
+
+7.24 用户BMI值随减肥过程中动态变化更新，利用相似用户的减重均值或中位数作为预测值。
+
+可以在每周添加其他模型例如：随机森林、XGBoost等。
