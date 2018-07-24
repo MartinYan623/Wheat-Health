@@ -2,12 +2,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 encoding='UTF-8'
-data0=pd.read_csv('/Users/martin_yan/Desktop/宝妈营用户单周减重及BMI变化.csv')
-data1=pd.read_csv('/Users/martin_yan/Desktop/第一周饮食得分.csv')
-data2=pd.read_csv('/Users/martin_yan/Desktop/第二周饮食得分.csv')
-data3=pd.read_csv('/Users/martin_yan/Desktop/第三周饮食得分.csv')
-data4=pd.read_csv('/Users/martin_yan/Desktop/第四周饮食得分.csv')
-data5=pd.read_csv('/Users/martin_yan/Desktop/第五周饮食得分.csv')
+data0=pd.read_csv('../data/宝妈营数据/宝妈营用户单周减重及BMI变化.csv')
+data1=pd.read_csv('../data/宝妈营数据/第一周饮食得分.csv')
+data2=pd.read_csv('../data/宝妈营数据/第二周饮食得分.csv')
+data3=pd.read_csv('../data/宝妈营数据/第三周饮食得分.csv')
+data4=pd.read_csv('../data/宝妈营数据/第四周饮食得分.csv')
+data5=pd.read_csv('../data/宝妈营数据/第五周饮食得分.csv')
 
 
 #获取一个list的中位数
@@ -183,19 +183,19 @@ if bmi[4]<24:
     for i in range(len(data0)):
         if data0.iloc[i]['初始BMI']<24:
             id.append(data0.iloc[i]['uid'])
-            weight2.append(data0.iloc[i]['第四周减重值'])
+            weight2.append(data0.iloc[i]['第五周减重值'])
 else:
     if bmi[4]>28:
         for i in range(len(data0)):
             if data0.iloc[i]['初始BMI']>28:
                 id.append(data0.iloc[i]['uid'])
-                weight2.append(data0.iloc[i]['第四周减重值'])
+                weight2.append(data0.iloc[i]['第五周减重值'])
 
     else:
         for i in range(len(data0)):
             if data0.iloc[i]['初始BMI']>24 and data0.iloc[i]['初始BMI']<28:
                 id.append(data0.iloc[i]['uid'])
-                weight2.append(data0.iloc[i]['第四周减重值'])
+                weight2.append(data0.iloc[i]['第五周减重值'])
 
 dataframe=pd.DataFrame({'用户编号':id,'减重值':weight2})
 data = pd.merge(data4, dataframe, on='用户编号')
